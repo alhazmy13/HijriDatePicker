@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HijriDatePicker</string>
+    <string name="cancel">الغاء</string>
+    <string name="dhu_alhijjah">ذو الحجة</string>
+    <string name="hello_world"></string>
+    <string name="done">موافق</string>
+    <string name="dhu_alqadah">ذو القعدة</string>
+    <string name="jamada_i">جماد الاول</string>
+    <string name="jamada_ii">جماد الثاني</string>
+    <string name="muḥarram">محرم</string>
+    <string name="rabi_i">ربيع الاول</string>
+    <string name="rabi_ii">ربيع الثاني</string>
+    <string name="rajab">رجب</string>
+    <string name="ramadan">رمضان</string>
+    <string name="safar">صفر</string>
+    <string name="shaban">شعبان</string>
+    <string name="shawal">شوال</string>
+</resources>

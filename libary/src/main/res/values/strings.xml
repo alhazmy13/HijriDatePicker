@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">HijriDatePicker</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="muḥarram">Muharam</string>
+    <string name="safar">Safar</string>
+    <string name="rabi_i">Rabi I</string>
+    <string name="rabi_ii">Rabi II</string>
+    <string name="jamada_i">Jamada I</string>
+    <string name="jamada_ii">Jamada II</string>
+    <string name="rajab">Rajab</string>
+    <string name="shaban">Shaban</string>
+    <string name="ramadan">Ramadan</string>
+    <string name="shawal">Shawal</string>
+    <string name="dhu_alqadah">Dhu Alqadah</string>
+    <string name="dhu_alhijjah">Dhu Alhijjah</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+
+</resources>
