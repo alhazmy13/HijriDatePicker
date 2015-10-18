@@ -28,7 +28,7 @@ dependencies {
 
 # Usage
 The library follows the same API as other pickers in the Android framework.
-After adding the library, for using a picker in your project you need to:
+After adding the library, you need to:
 
 1. Implement an `OnDateSetListener`
 2. Create a `HijriCalendarDialog` using the supplied factory
