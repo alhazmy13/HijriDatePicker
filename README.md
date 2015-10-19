@@ -3,7 +3,7 @@ This library offers a hijri (Islamic Calendar) Date Picker  designed on [Google'
 
 عربي | English
 ---- | ----
-![Arabic](https://camo.githubusercontent.com/e1367ae8bab8db71f9275f69eff1105645f4bc4b/68747470733a2f2f6769746875622d636c6f75642e73332e616d617a6f6e6177732e636f6d2f6173736574732f343635393630382f31303536353334362f30316662646337652d373564372d313165352d393364302d3765623035353664313966312e706e67) | ![English](https://camo.githubusercontent.com/da0ea333d8133cabc0acc5ac6667ed845e1c4f66/68747470733a2f2f6769746875622d636c6f75642e73332e616d617a6f6e6177732e636f6d2f6173736574732f343635393630382f31303536353334372f30323036303864652d373564372d313165352d386438312d3931363332386564376235622e706e67) 
+![Arabic](https://cloud.githubusercontent.com/assets/4659608/10579117/0466d434-767f-11e5-8172-534f1a47c608.png) | ![English](https://cloud.githubusercontent.com/assets/4659608/10579118/04684ee0-767f-11e5-8432-a9b5d67713f9.png) 
 
 You can report any issue on issues page. **Note: If you speak Arabic, you can submit issues with Arabic language and I will check them. :)**
 
