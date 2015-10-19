@@ -37,6 +37,7 @@ bintray {
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = allLicenses
+        userOrg = 'alhazmy13'
         publish = true
         publicDownloadNumbers = true
         version {

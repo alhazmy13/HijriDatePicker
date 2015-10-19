@@ -58,6 +58,8 @@
             android:layout_height="wrap_content"
             android:text="@string/cancel"
             android:id="@+id/closeButton"
+            android:backgroundTint="@color/mdtp_accent_color"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -65,7 +67,9 @@
             android:layout_height="wrap_content"
             android:text="@string/done"
             android:id="@+id/doneButton"
-            android:textColor="#FFFFFF" />
+            android:backgroundTint="@color/mdtp_accent_color"
+            android:textColor="#FFFFFF"
+            style="@style/Widget.AppCompat.Button.Colored" />
     </LinearLayout>
 
     <TableLayout

@@ -1,17 +1,23 @@
-package net.alhazmy13.hijridatepicker;
+package net.alhazmy13.hijricalenderexample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
+
+public class MainActivity extends AppCompatActivity implements HijriCalendarDialog.OnDateSetListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        HijriCalendarDialog dialog=new HijriCalendarDialog(this);
+        dialog.setUILanguage(HijriCalendarDialog.ARABIC);
+        dialog.setOnDateSetListener(this);
+        dialog.show();
     }
 
     @Override
@@ -34,5 +40,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDateSet(int year, int month, int day) {
+        Toast.makeText(this,year+"/"+month+"/"+day,Toast.LENGTH_SHORT).show();
     }
 }

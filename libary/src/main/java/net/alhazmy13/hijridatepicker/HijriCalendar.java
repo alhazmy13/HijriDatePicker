@@ -37,15 +37,14 @@ public class HijriCalendar {
         currentMonth=countMonth;
         currentYear=countYear;
     }
-    public String test(){
 
 
-        return calendar.get(Calendar.YEAR)+"/"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.DAY_OF_MONTH);
-    }
+    //Get Methodes
 
     public int getWeekStartFrom(){
-
-        return calendar.get(Calendar.DAY_OF_WEEK);
+        UmmalquraCalendar temp=new UmmalquraCalendar();
+        temp.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),1);
+        return temp.get(Calendar.DAY_OF_WEEK);
     }
     public int getLastDayOfMonth(){
         return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -56,42 +55,42 @@ public class HijriCalendar {
     public int getMonth(){
         return calendar.get(Calendar.MONTH)+1;
     }
-
     public String getMonthName(){
         return monthNames[calendar.get(Calendar.MONTH)];
     }
-
     public int getYear(){
         return calendar.get(Calendar.YEAR);
     }
 
     public void plusMonth(){
+        countMonth++;
         if(countMonth==12) {
             countMonth = 0;
             countYear++;
         }
         calendar=new UmmalquraCalendar(countYear,countMonth,calendar.get(Calendar.DAY_OF_MONTH));
-        countMonth++;
+
     }
 
+
     public void minusMonth(){
+        countMonth--;
         if(countMonth==-1) {
             countMonth = 11;
             countYear--;
         }
         calendar=new UmmalquraCalendar(countYear,countMonth,calendar.get(Calendar.DAY_OF_MONTH));
-        countMonth--;
+
     }
+
 
     public boolean isCurrentMonth(){
         return (countMonth==currentMonth && currentYear==countYear);
     }
-
     public void setMonth(int month){
         countMonth=month;
         calendar.set(Calendar.MONTH,month);
     }
-
     public void setDay(int day){
         calendar.set(Calendar.DAY_OF_MONTH,day);
     }
