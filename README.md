@@ -58,5 +58,11 @@ You can theme the pickers by overwriting the color resources `mdtp_accent_color`
 <color name="mdtp_accent_color">#009688</color>
 ```
 
+### Additional Options
+* `SetUILanguage` You can change the display language to your preferred language `ARABIC` or `ENGLISH`
+```java
+dialog.setUILanguage(HijriCalendarDialog.ARABIC);
+```
+
 ### Credits 
 Thanks to  [ummalqura-calendar Library](https://github.com/msarhan/ummalqura-calendar) and [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations).
