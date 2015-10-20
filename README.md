@@ -68,7 +68,7 @@ Thanks to  [ummalqura-calendar Library](https://github.com/msarhan/ummalqura-cal
 
 ## License
 
-    Copyright 2014 rengwuxian
+    Copyright 2015 alhazmy
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
