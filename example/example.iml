@@ -91,8 +91,8 @@
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.0.1" level="project" />
-    <orderEntry type="library" exported="" name="ummalqura-calendar-1.1.6" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="ummalqura-calendar-1.1.6" level="project" />
     <orderEntry type="module" module-name="libary" exported="" />
   </component>
 </module>
