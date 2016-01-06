@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/alhzmy13/HijriDatePicker'
     gitUrl = 'https://github.com/alhzmy13/HijriDatePicker.git'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.2.0'
 
     developerId = 'alhazmy13'
     developerName = 'Abdullah Alhazmy'
