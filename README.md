@@ -13,14 +13,14 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.hijridatepicker</groupId>
 <artifactId>libary</artifactId>
-<version>1.0.2</version>
+<version>1.1.0</version>
 </dependency>
 ```
 **Gradle**
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.hijridatepicker:libary:1.0.2'
+	compile 'net.alhazmy13.hijridatepicker:libary:1.1.0'
 }
 ```
 
@@ -45,9 +45,9 @@ In order to receive the date  set in the picker, you will need to implement the 
 ### Create a `HijriCalendarDialog`
 You will need to create a new instance of `HijriCalendarDialog`. Once the dialogs are configured, you can call `show()`.
 ```java
- HijriCalendarDialog dialog = new HijriCalendarDialog(this);
-        dialog.setOnDateSetListener(this);
-        dialog.show();
+         new HijriCalendarDialog.Builder(this)
+                .setOnDateSetListener(this)
+                .show();
 ```
 
 ### Theme the pickers
@@ -60,6 +60,18 @@ You can theme the pickers by overwriting the color resources `mdtp_accent_color`
 * `SetUILanguage` You can change the display language to your preferred language `ARABIC` or `ENGLISH`
 ```java
 dialog.setUILanguage(HijriCalendarDialog.ARABIC);
+```
+* `setMaxYear` To set the maximum year for dialg
+```java
+dialog.setMaxYear(1440);
+```
+* `setMinYear` To set the minimum year for dialg
+```java
+dialog.setMinYear(1437);
+```
+* `setMinMaxYear` To set the minimum and maximum year for dialog
+```java
+dialog.setMinMaxYear(1430,1440);
 ```
 
 ### Credits 

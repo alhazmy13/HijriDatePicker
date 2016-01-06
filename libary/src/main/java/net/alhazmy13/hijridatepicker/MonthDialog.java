@@ -12,22 +12,35 @@ import java.util.ArrayList;
 /**
  * Created by Alhazmy13 on 10/15/15.
  */
-public class MonthDialog extends Dialog implements View.OnTouchListener {
-    private Context context;
+class MonthDialog extends Dialog implements View.OnTouchListener {
+    private Context mConntext;
     ArrayList<TextView> textViews=new ArrayList<>();
+    private OnMonthChanged onMonthChanged;
 
+    /**
+     *
+     */
     interface OnMonthChanged{
         void onMonthChanged(int month);
     }
-    private OnMonthChanged onMonthChanged;
+
+    /**
+     *
+     * @param listen
+     */
     public void setOnDateChanged(OnMonthChanged listen) {
         onMonthChanged = listen;
     }
+
+    /**
+     *
+     * @param context
+     */
     public MonthDialog(Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.months_dialog);
-        this.context=context;
+        this.mConntext=context;
         textViews.add((TextView)findViewById(R.id.m1TextView));
         textViews.add((TextView)findViewById(R.id.m2TextView));
         textViews.add((TextView)findViewById(R.id.m3TextView));
@@ -46,7 +59,12 @@ public class MonthDialog extends Dialog implements View.OnTouchListener {
 
     }
 
-
+    /**
+     *
+     * @param view
+     * @param motionEvent
+     * @return
+     */
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         TextView temp=(TextView)view;

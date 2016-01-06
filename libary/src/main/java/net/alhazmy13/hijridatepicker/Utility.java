@@ -3,7 +3,7 @@ package net.alhazmy13.hijridatepicker;
 /**
  * Created by Alhazmy13 on 10/19/15.
  */
-public class Utility {
+class Utility {
 
     public static String toEnglishNumbers(String day){
         String englishNumbers=

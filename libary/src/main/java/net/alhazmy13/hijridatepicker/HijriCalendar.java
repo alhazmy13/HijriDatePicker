@@ -10,14 +10,14 @@ import java.util.Calendar;
 /**
  * Created by Alhazmy13 on 10/14/15.
  */
-public class HijriCalendar {
+class HijriCalendar {
 
     private UmmalquraCalendar calendar;
-    private Context context;
     private String[] monthNames;
     private int countMonth,countYear,currentMonth,currentYear;
+    private int year;
+
     public HijriCalendar(Context context){
-        this.context=context;
         calendar=new UmmalquraCalendar();
         monthNames=new String[]{
                 context.getResources().getString(R.string.muḥarram),
@@ -93,5 +93,10 @@ public class HijriCalendar {
     }
     public void setDay(int day){
         calendar.set(Calendar.DAY_OF_MONTH,day);
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+        calendar.set(Calendar.YEAR,year);
     }
 }
