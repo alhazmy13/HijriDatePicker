@@ -1,3 +1,6 @@
+<p align="left">
+  <img src="https://cloud.githubusercontent.com/assets/4659608/12700270/e1730608-c7ed-11e5-8a18-a382fe7b63bd.png" width="500">
+</p>
 # Hijri Date Picker
 This library offers a hijri (Islamic Calendar) Date Picker  designed on [Google's Material Design Principals For Pickers](http://www.google.com/design/spec/components/pickers.html) for Android 4.1 (API 16) +.
 
