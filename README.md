@@ -21,14 +21,14 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.hijridatepicker</groupId>
 <artifactId>libary</artifactId>
-<version>1.2.0</version>
+<version>1.2.1</version>
 </dependency>
 ```
 **Gradle**
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.hijridatepicker:libary:1.2.0'
+	compile 'net.alhazmy13.hijridatepicker:libary:1.2.1'
 }
 ```
 
