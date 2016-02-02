@@ -1,8 +1,4 @@
 <resources>
-    <string name="app_name">HijriDatePicker</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="muḥarram">Muharam</string>
     <string name="safar">Safar</string>
     <string name="rabi_i">Rabi I</string>
@@ -15,8 +11,8 @@
     <string name="shawal">Shawal</string>
     <string name="dhu_alqadah">Dhu Alqadah</string>
     <string name="dhu_alhijjah">Dhu Alhijjah</string>
-    <string name="done">Done</string>
-    <string name="cancel">Cancel</string>
-    <string name="year">Year</string>
+    <string name="hijri_date_picker_done">Done</string>
+    <string name="hijri_date_picker_cancel">Cancel</string>
+    <string name="hijri_date_picker_year">Year</string>
 
 </resources>

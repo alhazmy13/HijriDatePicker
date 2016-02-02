@@ -11,7 +11,6 @@ package net.alhazmy13.hijridatepicker;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -39,7 +38,7 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener {
     public YearDialog(Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.setContentView(R.layout.year_dialog);
+        this.setContentView(R.layout.dialog_year);
         this.mContext=context;
         this.setOnDismissListener(this);
         initViews();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="days">
+    <string-array name="hijri_date_picker_days">
         <item>الاحد</item>
         <item>الاثنين</item>
         <item>الثلاثاء</item>

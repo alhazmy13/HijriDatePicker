@@ -13,9 +13,17 @@ import java.util.ArrayList;
  * Created by Alhazmy13 on 10/15/15.
  */
 class MonthDialog extends Dialog implements View.OnTouchListener {
-    private Context mConntext;
+    private Context mContext;
     ArrayList<TextView> textViews=new ArrayList<>();
     private OnMonthChanged onMonthChanged;
+    private int currentMonth;
+
+    public void setCurrentMonth(int currentMonth) {
+        this.currentMonth = currentMonth;
+        textViews.get(currentMonth).setBackground(mContext.getResources().getDrawable(R.drawable.hijri_date_picker_card_selected));
+        textViews.get(currentMonth).setTextColor(mContext.getResources().getColor(android.R.color.white));
+
+    }
 
     /**
      *
@@ -38,9 +46,9 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
      */
     public MonthDialog(Context context) {
         super(context);
+        this.mContext = context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.setContentView(R.layout.months_dialog);
-        this.mConntext=context;
+        this.setContentView(R.layout.dialog_months);
         textViews.add((TextView)findViewById(R.id.m1TextView));
         textViews.add((TextView)findViewById(R.id.m2TextView));
         textViews.add((TextView)findViewById(R.id.m3TextView));
@@ -53,9 +61,9 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
         textViews.add((TextView)findViewById(R.id.m10TextView));
         textViews.add((TextView)findViewById(R.id.m11TextView));
         textViews.add((TextView)findViewById(R.id.m12TextView));
-        for(int i=0;i<textViews.size();i++)
+        for(int i=0;i<textViews.size();i++) {
             textViews.get(i).setOnTouchListener(this);
-
+        }
 
     }
 

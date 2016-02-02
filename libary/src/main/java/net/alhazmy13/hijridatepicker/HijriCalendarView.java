@@ -58,7 +58,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
     public HijriCalendarView(final Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.setContentView(R.layout.hijri_calendar_dialog);
+        this.setContentView(R.layout.dialog_hijri_calendar);
         this.context=context;
 
         flowFunctions();
@@ -80,7 +80,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
      */
     @Override
     public void onMonthChanged(int month) {
-        hijriCalendar.setMonth(month);
+        hijriCalendar.setMonth(month+1);
         initDays();
     }
 
@@ -96,7 +96,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             lastSelectedDay.setBackground(null);
 
 
-            temp.setBackgroundColor(context.getResources().getColor(R.color.mdtp_accent_color));
+            temp.setBackgroundColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
             temp.setTextColor(context.getResources().getColor(android.R.color.white));
             lastSelectedDay = temp;
             dayTextView.setText(temp.getText().toString());
@@ -115,7 +115,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         yearTextView = (TextView) findViewById(R.id.yearTextView);
         doneButton=(Button)findViewById(R.id.doneButton);
         cancelButton =(Button)findViewById(R.id.closeButton);
-        days=context.getResources().getStringArray(R.array.days);
+        days=context.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
         if(GeneralAttribute.language == 1)callSwitchLang("ar"); else callSwitchLang("en");
         hijriCalendar = new HijriCalendar(context);
@@ -130,7 +130,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             TextView textView = new TextView(context);
             textView.setLayoutParams(params);
             textView.setTextSize(11);
-            textView.setTextColor(context.getResources().getColor(R.color.mdtp_accent_color));
+            textView.setTextColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
             textView.setGravity(Gravity.CENTER);
             textView.setText(days[i]);
             daysHeader.addView(textView);
@@ -157,7 +157,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                 textView.setGravity(Gravity.CENTER);
                 textView.setOnClickListener(this);
                 textView.setTextColor(context.getResources().getColor(android.R.color.darker_gray));
-                if (count < 30) {
+                if (count <= hijriCalendar.lengthOfMonth()) {
                     if (firstTime && j == hijriCalendar.getWeekStartFrom()) {
                         textView.setText(GeneralAttribute.language == 1?Utility.toArabicNumbers(count+""):count+"");
                         firstTime = false;
@@ -174,7 +174,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
 
                 }
                 if (hijriCalendar.isCurrentMonth() && count - 1 == hijriCalendar.getDayOfMonth()) {
-                    textView.setBackgroundColor(context.getResources().getColor(R.color.mdtp_accent_color));
+                    textView.setBackgroundColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
                     textView.setTextColor(context.getResources().getColor(android.R.color.white));
                     lastSelectedDay = textView;
                 }
@@ -192,6 +192,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 MonthDialog monthDialog = new MonthDialog(context);
                 monthDialog.setOnDateChanged(HijriCalendarView.this);
+                monthDialog.setCurrentMonth(hijriCalendar.getCurrentMonth());
                 monthDialog.show();
 
                 return false;

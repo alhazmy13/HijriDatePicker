@@ -2,6 +2,9 @@ package net.alhazmy13.hijricalenderexample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
@@ -13,17 +16,20 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        new HijriCalendarDialog.Builder(this)
-                .setOnDateSetListener(this)
-                .show();
+        ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new HijriCalendarDialog.Builder(MainActivity.this)
+                        .setOnDateSetListener(MainActivity.this)
+                        .setMinMaxYear(1430,1450)
+                        .show();
+            }
+        });
 
     }
 
-
-
     @Override
     public void onDateSet(int year, int month, int day) {
-        Toast.makeText(this,year+"/"+month+"/"+day,Toast.LENGTH_SHORT).show();
+        ((TextView) findViewById(R.id.textView)).setText(year+"/"+month+"/"+day);
     }
 }

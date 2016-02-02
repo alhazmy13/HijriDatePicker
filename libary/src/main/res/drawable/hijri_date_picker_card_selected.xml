@@ -2,7 +2,7 @@
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">>
-    <solid android:color="@color/mdtp_accent_color" />
+    <solid android:color="@color/hijri_date_picker_accent_color" />
     <size android:height="4dp"
         android:width="4dp"/>
 </shape>
