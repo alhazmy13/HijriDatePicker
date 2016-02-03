@@ -67,19 +67,35 @@ You can theme the pickers by overwriting the color resources `hijri_date_picker_
 ### Additional Options
 * `SetUILanguage` You can change the display language to your preferred language `ARABIC` or `ENGLISH`
 ```java
-dialog.setUILanguage(HijriCalendarDialog.ARABIC);
+dialog.setUILanguage(HijriCalendarDialog.Language.Arabic);
 ```
-* `setMaxYear` To set the maximum year for dialg
+* `setMode` to change the mode from `Hijri` to `Gregorian`
 ```java
-dialog.setMaxYear(1440);
+dialog.setMode(HijriCalendarDialog.Mode.Gregorian)
 ```
-* `setMinYear` To set the minimum year for dialg
+* `setMaxHijriYear` To set the maximum Hijri year for dialg
+```java
+dialog.setMaxHijriYear(1440);
+```
+* `setMinHijriYear` To set the minimum hijri year for dialg
 ```java
 dialog.setMinYear(1437);
 ```
-* `setMinMaxYear` To set the minimum and maximum year for dialog
+* `setMinMaxHijriYear` To set the minimum and maximum hijri year for dialog
 ```java
-dialog.setMinMaxYear(1430,1440);
+dialog.setMinMaxHijriYear(1430,1440);
+```
+* `setMaxGregorianYear` To set the maximum Gregorian year for dialg
+```java
+dialog.setMaxGregorianYear(1440);
+```
+* `setMinGregorianYear` To set the minimum Gregorian year for dialg
+```java
+dialog.setMinGregorianYear(1437);
+```
+* `setMinMaxGregorianYear` To set the minimum and maximum Gregorian year for dialog
+```java
+dialog.setMinMaxGregorianYear(1430,1440);
 ```
 
 ### Credits 

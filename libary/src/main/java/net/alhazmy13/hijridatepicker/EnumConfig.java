@@ -3,7 +3,7 @@ package net.alhazmy13.hijridatepicker;
 /**
  * Created by Alhazmy13 on 2/3/16.
  */
-public interface EnumConfig {
+interface EnumConfig {
     enum Mode{
         Hijri(1),
         Gregorian(2);
