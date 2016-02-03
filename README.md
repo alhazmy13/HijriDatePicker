@@ -59,9 +59,9 @@ You will need to create a new instance of `HijriCalendarDialog`. Once the dialog
 ```
 
 ### Theme the pickers
-You can theme the pickers by overwriting the color resources `mdtp_accent_color` in your project.
+You can theme the pickers by overwriting the color resources `hijri_date_picker_accent_color` in your project.
 ```xml
-<color name="mdtp_accent_color">#009688</color>
+<color name="hijri_date_picker_accent_color">#009688</color>
 ```
 
 ### Additional Options
