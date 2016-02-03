@@ -15,4 +15,16 @@
     <string name="shaban">شعبان</string>
     <string name="shawal">شوال</string>
     <string name="hijri_date_picker_year">السنة</string>
+    <string name="January">يناير</string>
+    <string name="February">فبراير</string>
+    <string name="December">ديسمبر</string>
+    <string name="August">أغسطس</string>
+    <string name="April">ابريل</string>
+    <string name="November">نوفمبر</string>
+    <string name="October">اكتوبر</string>
+    <string name="September">سبتمبر</string>
+    <string name="June">يونيو</string>
+    <string name="July">يوليو</string>
+    <string name="May">مايو</string>
+    <string name="March">مارس</string>
 </resources>

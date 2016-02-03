@@ -42,8 +42,13 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener {
         this.mContext=context;
         this.setOnDismissListener(this);
         initViews();
-        numberPicker.setMaxValue(GeneralAttribute.max);
-        numberPicker.setMinValue(GeneralAttribute.min);
+        if(GeneralAttribute.mode == EnumConfig.Mode.Hijri.getModeValue()) {
+            numberPicker.setMaxValue(GeneralAttribute.hijri_max);
+            numberPicker.setMinValue(GeneralAttribute.hijri_min);
+        }else{
+            numberPicker.setMaxValue(GeneralAttribute.gregorian_max);
+            numberPicker.setMinValue(GeneralAttribute.gregorian_min);
+        }
 
     }
 

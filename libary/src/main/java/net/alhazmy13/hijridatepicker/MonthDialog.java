@@ -17,12 +17,19 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
     ArrayList<TextView> textViews=new ArrayList<>();
     private OnMonthChanged onMonthChanged;
     private int currentMonth;
+    private String[] monthNames;
 
     public void setCurrentMonth(int currentMonth) {
         this.currentMonth = currentMonth;
         textViews.get(currentMonth).setBackground(mContext.getResources().getDrawable(R.drawable.hijri_date_picker_card_selected));
         textViews.get(currentMonth).setTextColor(mContext.getResources().getColor(android.R.color.white));
 
+    }
+
+    public void setMonthNames(String[] monthNames) {
+        for (int i = 0; i < monthNames.length; i++) {
+            textViews.get(i).setText(monthNames[i]);
+        }
     }
 
     /**
@@ -81,5 +88,9 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
         }
         dismiss();
         return false;
+    }
+
+    public void updateMonthTexts(){
+
     }
 }

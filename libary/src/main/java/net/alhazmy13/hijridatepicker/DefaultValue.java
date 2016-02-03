@@ -10,7 +10,5 @@ package net.alhazmy13.hijridatepicker;
  * Created by Alhazmy13 on 1/6/16.
  */
 interface DefaultValue {
-    int ARABIC=1;
-    int ENGLISH=2;
     int MIN_DISTANCE = 150;
 }

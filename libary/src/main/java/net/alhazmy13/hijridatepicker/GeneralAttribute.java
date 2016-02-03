@@ -14,8 +14,11 @@ import android.content.Context;
 class GeneralAttribute {
     public static Context mContext;
     public static String title;
-    public static int max;
-    public static int min;
     public static int language;
     public static HijriCalendarView.OnDateSetListener onDateSetListener;
+    public static int mode = EnumConfig.Mode.Hijri.getModeValue();
+    public static int hijri_min;
+    public static int hijri_max;
+    public static int gregorian_min;
+    public static int gregorian_max;
 }

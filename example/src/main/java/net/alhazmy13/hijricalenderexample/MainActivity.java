@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.alhazmy13.hijridatepicker.EnumConfig;
 import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
 import net.alhazmy13.hijridatepicker.HijriCalendarView;
 
@@ -21,7 +22,10 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarView
             public void onClick(View view) {
                 new HijriCalendarDialog.Builder(MainActivity.this)
                         .setOnDateSetListener(MainActivity.this)
-                        .setMinMaxYear(1430,1450)
+                        .setMinMaxHijriYear(1430,1450)
+                        .setMinMaxGregorianYear(2013,2020)
+                        .setUILanguage(EnumConfig.Language.English)
+                        .setMode(HijriCalendarDialog.Mode.Gregorian)
                         .show();
             }
         });

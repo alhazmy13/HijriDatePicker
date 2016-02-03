@@ -11,7 +11,7 @@ import android.content.Context;
 /**
  * Created by Alhazmy13 on 1/6/16.
  */
-public class HijriCalendarDialog {
+public class HijriCalendarDialog implements EnumConfig{
 
     public HijriCalendarDialog(){
 
@@ -20,27 +20,47 @@ public class HijriCalendarDialog {
         public Builder(Context context) {
             GeneralAttribute.mContext=context;
             GeneralAttribute.title="";
-            GeneralAttribute.max = 1450;
-            GeneralAttribute.min = 1437;
+            GeneralAttribute.hijri_max = 1450;
+            GeneralAttribute.hijri_min = 1437;
+            GeneralAttribute.gregorian_max = 2050;
+            GeneralAttribute.gregorian_min = 2013;
+            GeneralAttribute.language = Language.English.getLanguageValue();
         }
-        public HijriCalendarDialog.Builder setMaxYear(int maxYear) {
-            GeneralAttribute.max=maxYear;
+        public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
+            GeneralAttribute.hijri_max=maxYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinYear(int minYear) {
-            GeneralAttribute.min=minYear;
+        public HijriCalendarDialog.Builder setMinHijriYear(int minYear) {
+            GeneralAttribute.hijri_min=minYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinMaxYear(int min,int max){
-            GeneralAttribute.max = max;
-            GeneralAttribute.min = min;
+        public HijriCalendarDialog.Builder setMinMaxHijriYear(int min,int max){
+            GeneralAttribute.hijri_max = max;
+            GeneralAttribute.hijri_min = min;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setUILanguage(int language){
-            GeneralAttribute.language = language;
+
+        public HijriCalendarDialog.Builder setMaxGregorianYear(int maxYear) {
+            GeneralAttribute.gregorian_max=maxYear;
+            return this;
+        }
+
+        public HijriCalendarDialog.Builder setMinGregorianYear(int minYear) {
+            GeneralAttribute.gregorian_min=minYear;
+            return this;
+        }
+
+        public HijriCalendarDialog.Builder setMinMaxGregorianYear(int min,int max){
+            GeneralAttribute.gregorian_max = max;
+            GeneralAttribute.gregorian_min = min;
+            return this;
+        }
+
+        public HijriCalendarDialog.Builder setUILanguage(Language language){
+            GeneralAttribute.language = language.getLanguageValue();
             return this;
         }
         public  HijriCalendarDialog.Builder setOnDateSetListener(HijriCalendarView.OnDateSetListener onDateSetListener){
@@ -51,7 +71,10 @@ public class HijriCalendarDialog {
             new HijriCalendarView(GeneralAttribute.mContext).show();
             return this;
         }
-
+        public HijriCalendarDialog.Builder setMode(Mode mode){
+            GeneralAttribute.mode = mode.getModeValue();
+            return this;
+        }
 
 
     }
