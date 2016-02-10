@@ -11,6 +11,7 @@ package net.alhazmy13.hijridatepicker;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -19,11 +20,13 @@ import android.widget.TextView;
 
 /**
  * Created by Alhazmy13 on 1/6/16.
+ * HijriDatePicker
  */
-class YearDialog extends Dialog implements DialogInterface.OnDismissListener {
+class YearDialog extends Dialog implements DialogInterface.OnDismissListener,View.OnClickListener {
     private Context mContext;
     private NumberPicker numberPicker;
     private OnYearChanged onYearChanged;
+    private Button okButton;
     private int year;
 
 
@@ -54,6 +57,8 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener {
 
     private void initViews() {
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
+        okButton = (Button) findViewById(R.id.okBT);
+        okButton.setOnClickListener(this);
     }
 
     protected void setTitle(String title){
@@ -68,4 +73,11 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener {
     public void setYear(int year) {
         this.numberPicker.setValue(year);
     }
+
+    @Override
+    public void onClick(View view) {
+        onYearChanged.onYearChanged(numberPicker.getValue());
+        dismiss();
+    }
+
 }
