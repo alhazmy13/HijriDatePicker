@@ -122,10 +122,10 @@ class HijriCalendar implements CustomCalendarView {
     }
     @Override
     public int getOffsetMonthCount() {
-        int temp = countMonth-1;
+        int temp = countMonth;
         if(temp == -1)
             temp = 11;
-        else if(temp== 12)
+        else if(temp>= 12)
             temp = 0;
         return temp;
     }

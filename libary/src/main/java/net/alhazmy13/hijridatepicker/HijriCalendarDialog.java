@@ -10,10 +10,36 @@ import android.content.Context;
 
 /**
  * Created by Alhazmy13 on 1/6/16.
+ *  HijriDatePicker
  */
-public class HijriCalendarDialog implements EnumConfig{
+public class HijriCalendarDialog {
 
     public HijriCalendarDialog(){
+
+    }
+   public enum Mode{
+        Hijri(1),
+        Gregorian(2);
+        private int mode;
+        Mode(int mode) {
+            this.mode = mode;
+        }
+        public int getModeValue() {
+            return mode;
+        }
+
+    }
+
+    public enum Language{
+        Arabic(1),
+        English(2);
+        private int language;
+        Language(int language) {
+            this.language = language;
+        }
+        public int getLanguageValue() {
+            return language;
+        }
 
     }
     public static class  Builder{

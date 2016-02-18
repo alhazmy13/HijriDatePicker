@@ -119,7 +119,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         cancelButton =(Button)findViewById(R.id.closeButton);
         days=context.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
-        if(GeneralAttribute.language == EnumConfig.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
+        if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
         calendarInstance = new CalendarInstance(context,GeneralAttribute.mode);
     }
 
@@ -161,11 +161,11 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                 textView.setTextColor(context.getResources().getColor(android.R.color.darker_gray));
                 if (count <= calendarInstance.lengthOfMonth()) {
                     if (firstTime && j == calendarInstance.getWeekStartFrom()) {
-                        textView.setText(GeneralAttribute.language == EnumConfig.Language.Arabic.getLanguageValue()?Utility.toArabicNumbers(count+""):count+"");
+                        textView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue()?Utility.toArabicNumbers(count+""):count+"");
                         firstTime = false;
                         count++;
                     } else if (!firstTime) {
-                        textView.setText(GeneralAttribute.language == EnumConfig.Language.Arabic.getLanguageValue()?Utility.toArabicNumbers(count+""):count+"");
+                        textView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue()?Utility.toArabicNumbers(count+""):count+"");
                         count++;
                     } else {
                         textView.setText("");
@@ -215,7 +215,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             @Override
             public void onClick(View view) {
                 if (GeneralAttribute.onDateSetListener != null) {
-                        GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
+                        GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth()+1, calendarInstance.getDayOfMonth());
 
                 }
                 dismiss();
@@ -230,9 +230,9 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
     }
 
     private void updateCalenderInformation(){
-        dayTextView.setText(GeneralAttribute.language == EnumConfig.Language.Arabic.getLanguageValue() ? Utility.toArabicNumbers(calendarInstance.getDayOfMonth() + "") : calendarInstance.getDayOfMonth() + "");
+        dayTextView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue() ? Utility.toArabicNumbers(calendarInstance.getDayOfMonth() + "") : calendarInstance.getDayOfMonth() + "");
         monthTextView.setText(calendarInstance.getMonthName());
-        yearTextView.setText(GeneralAttribute.language == EnumConfig.Language.Arabic.getLanguageValue()  ? Utility.toArabicNumbers(calendarInstance.getYear() + "") : calendarInstance.getYear() + "");
+        yearTextView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue()  ? Utility.toArabicNumbers(calendarInstance.getYear() + "") : calendarInstance.getYear() + "");
     }
 
 

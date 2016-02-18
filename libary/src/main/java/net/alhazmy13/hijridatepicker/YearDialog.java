@@ -45,7 +45,7 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener,Vie
         this.mContext=context;
         this.setOnDismissListener(this);
         initViews();
-        if(GeneralAttribute.mode == EnumConfig.Mode.Hijri.getModeValue()) {
+        if(GeneralAttribute.mode == HijriCalendarDialog.Mode.Hijri.getModeValue()) {
             numberPicker.setMaxValue(GeneralAttribute.hijri_max);
             numberPicker.setMinValue(GeneralAttribute.hijri_min);
         }else{

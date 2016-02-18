@@ -16,7 +16,7 @@ class GeneralAttribute {
     public static String title;
     public static int language;
     public static HijriCalendarView.OnDateSetListener onDateSetListener;
-    public static int mode = EnumConfig.Mode.Hijri.getModeValue();
+    public static int mode = HijriCalendarDialog.Mode.Hijri.getModeValue();
     public static int hijri_min;
     public static int hijri_max;
     public static int gregorian_min;

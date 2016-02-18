@@ -84,7 +84,7 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
     public boolean onTouch(View view, MotionEvent motionEvent) {
         TextView temp=(TextView)view;
         if (onMonthChanged != null) {
-            onMonthChanged.onMonthChanged(textViews.indexOf(temp));
+            onMonthChanged.onMonthChanged(textViews.indexOf(temp)-1);
         }
         dismiss();
         return false;
