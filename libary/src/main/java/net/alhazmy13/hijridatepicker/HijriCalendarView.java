@@ -121,6 +121,12 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         textViewList = new ArrayList<>();
         if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
         calendarInstance = new CalendarInstance(context,GeneralAttribute.mode);
+        if (GeneralAttribute.setDefaultDate)
+        {
+            calendarInstance.setDay(GeneralAttribute.defaultDay);
+            calendarInstance.setMonth(GeneralAttribute.defaultMonth);
+            calendarInstance.setYear(GeneralAttribute.defaultYear);
+        }
     }
 
     private void initHeaderOfCalender() {
@@ -175,7 +181,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                     textView.setText("");
 
                 }
-                if (calendarInstance.isCurrentMonth() && count - 1 == calendarInstance.getDayOfMonth()) {
+                if (count - 1 == calendarInstance.getDayOfMonth()) {
                     textView.setBackgroundColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
                     textView.setTextColor(context.getResources().getColor(android.R.color.white));
                     lastSelectedDay = textView;
