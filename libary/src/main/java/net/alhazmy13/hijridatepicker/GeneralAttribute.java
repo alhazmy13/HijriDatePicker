@@ -21,4 +21,8 @@ class GeneralAttribute {
     public static int hijri_max;
     public static int gregorian_min;
     public static int gregorian_max;
+    public static boolean setDefaultDate = false;
+    public static int defaultDay;
+    public static int defaultMonth;
+    public static int defaultYear;
 }

@@ -101,6 +101,13 @@ public class HijriCalendarDialog {
             GeneralAttribute.mode = mode.getModeValue();
             return this;
         }
+        public HijriCalendarDialog.Builder setDefaultDate(int day, int month, int year){
+            GeneralAttribute.setDefaultDate = true;
+            GeneralAttribute.defaultDay = day;
+            GeneralAttribute.defaultMonth = month;
+            GeneralAttribute.defaultYear = year;
+            return this;
+        }
 
 
     }
