@@ -69,7 +69,7 @@ public class HijriCalendarDialog {
             return this;
         }
 
-        public HijriCalendarDialog.Builder enableScrolling(boolean scrolling){
+        public HijriCalendarDialog.Builder setEnableScrolling(boolean scrolling){
             GeneralAttribute.scrolling = scrolling;
             return this;
         }
