@@ -20,4 +20,5 @@ interface CustomCalendarView {
     int getCurrentMonth();
     int getOffsetMonthCount();
     String[] getMonths();
+    int getCurrentYear();
 }

@@ -25,4 +25,5 @@ class GeneralAttribute {
     public static int defaultDay;
     public static int defaultMonth;
     public static int defaultYear;
+    public static boolean scrolling;
 }

@@ -50,6 +50,7 @@ public class HijriCalendarDialog {
             GeneralAttribute.hijri_min = 1437;
             GeneralAttribute.gregorian_max = 2050;
             GeneralAttribute.gregorian_min = 2013;
+            GeneralAttribute.scrolling = true;
             GeneralAttribute.language = Language.English.getLanguageValue();
         }
         public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
@@ -68,6 +69,10 @@ public class HijriCalendarDialog {
             return this;
         }
 
+        public HijriCalendarDialog.Builder enableScrolling(boolean scrolling){
+            GeneralAttribute.scrolling = scrolling;
+            return this;
+        }
 
         public HijriCalendarDialog.Builder setMaxGregorianYear(int maxYear) {
             GeneralAttribute.gregorian_max=maxYear;

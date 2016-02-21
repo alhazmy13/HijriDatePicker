@@ -12,6 +12,8 @@ public class CalendarInstance implements CustomCalendarView{
     private GregorianCalendar georgian;
     private Context mContext;
     private int mMode;
+    private int currentYear;
+
     public CalendarInstance(Context context, int mode){
         this.hijri = new HijriCalendar(context);
         this.georgian = new GregorianCalendar(context);
@@ -136,5 +138,11 @@ public class CalendarInstance implements CustomCalendarView{
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getMonths();
         return georgian.getMonths();
+    }
+
+    public int getCurrentYear() {
+        if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
+            return hijri.getCurrentYear();
+        return georgian.getCurrentYear();
     }
 }

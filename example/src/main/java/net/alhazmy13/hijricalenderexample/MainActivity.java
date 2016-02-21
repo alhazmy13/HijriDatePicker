@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarView
                         .setUILanguage(HijriCalendarDialog.Language.English)
                         .setMode(HijriCalendarDialog.Mode.Hijri)
                         .setDefaultHijriDate(8, 0, 1437)//months start from 0
+                        .enableScrolling(false)
                         .show();
 
 
