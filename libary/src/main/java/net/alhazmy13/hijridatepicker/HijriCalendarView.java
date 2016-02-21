@@ -36,6 +36,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
 
 
     public interface OnDateSetListener{
+        @Deprecated
         void onDateSet(int year, int month, int day);
     }
 
@@ -120,7 +121,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         days=context.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
         if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
-        calendarInstance = new CalendarInstance(context,GeneralAttribute.mode);
+        calendarInstance = new CalendarInstance(context,GeneralAttribute.mode.getModeValue());
         if (GeneralAttribute.setDefaultDate)
         {
             calendarInstance.setDay(GeneralAttribute.defaultDay);
@@ -181,7 +182,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                     textView.setText("");
 
                 }
-                if (count - 1 == calendarInstance.getDayOfMonth()) {
+                if ((calendarInstance.isCurrentMonth() || calendarInstance.getCurrentMonth() == GeneralAttribute.defaultMonth) && count - 1 == calendarInstance.getDayOfMonth()) {
                     textView.setBackgroundColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
                     textView.setTextColor(context.getResources().getColor(android.R.color.white));
                     lastSelectedDay = textView;
@@ -221,7 +222,8 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             @Override
             public void onClick(View view) {
                 if (GeneralAttribute.onDateSetListener != null) {
-                        GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth()+1, calendarInstance.getDayOfMonth());
+                        GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
+
 
                 }
                 dismiss();

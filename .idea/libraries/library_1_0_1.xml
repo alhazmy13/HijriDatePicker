@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="library-1.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libary/build/intermediates/exploded-aar/com.daimajia.easing/library/1.0.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/libary/build/intermediates/exploded-aar/com.daimajia.easing/library/1.0.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.daimajia.easing/library/1.0.1/a87d9b9243021d29958000cd68f8e6c833d2482b/library-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

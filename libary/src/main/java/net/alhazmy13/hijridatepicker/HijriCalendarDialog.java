@@ -98,13 +98,15 @@ public class HijriCalendarDialog {
             return this;
         }
         public HijriCalendarDialog.Builder setMode(Mode mode){
-            GeneralAttribute.mode = mode.getModeValue();
+            GeneralAttribute.mode = mode;
             return this;
         }
-        public HijriCalendarDialog.Builder setDefaultDate(int day, int month, int year){
+        public HijriCalendarDialog.Builder setDefaultHijriDate(int day, int month, int year){
+            if (month>11 || month<0)
+                throw new RuntimeException("Month must be between 0-11");
             GeneralAttribute.setDefaultDate = true;
             GeneralAttribute.defaultDay = day;
-            GeneralAttribute.defaultMonth = month;
+            GeneralAttribute.defaultMonth = month>11?0:month;
             GeneralAttribute.defaultYear = year;
             return this;
         }

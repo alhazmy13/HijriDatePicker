@@ -4,19 +4,17 @@ import android.content.Context;
 
 import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
 
-import java.util.Calendar;
-
 /**
  * Created by Alhazmy13 on 2/3/16.
  */
 public class CalendarInstance implements CustomCalendarView{
     private HijriCalendar hijri;
-    private GregorianCalendar gerogian;
+    private GregorianCalendar georgian;
     private Context mContext;
     private int mMode;
     public CalendarInstance(Context context, int mode){
         this.hijri = new HijriCalendar(context);
-        this.gerogian = new GregorianCalendar(context);
+        this.georgian = new GregorianCalendar(context);
         this.mMode = mode;
     }
     @Override
@@ -25,7 +23,7 @@ public class CalendarInstance implements CustomCalendarView{
             hijri.plusMonth();
             return;
         }
-        gerogian.plusMonth();
+        georgian.plusMonth();
     }
 
     @Override
@@ -34,14 +32,14 @@ public class CalendarInstance implements CustomCalendarView{
             hijri.minusMonth();
             return;
         }
-        gerogian.minusMonth();
+        georgian.minusMonth();
     }
 
     @Override
     public boolean isCurrentMonth() {
         if (mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
         return hijri.isCurrentMonth();
-        return gerogian.isCurrentMonth();
+        return georgian.isCurrentMonth();
     }
 
     @Override
@@ -50,7 +48,7 @@ public class CalendarInstance implements CustomCalendarView{
             hijri.setMonth(month);
             return;
         }
-        gerogian.setMonth(month);
+        georgian.setMonth(month);
     }
 
     @Override
@@ -59,7 +57,7 @@ public class CalendarInstance implements CustomCalendarView{
             hijri.setDay(day);
             return;
         }
-        gerogian.setDay(day);
+        georgian.setDay(day);
     }
 
     @Override
@@ -68,75 +66,75 @@ public class CalendarInstance implements CustomCalendarView{
             hijri.setYear(year);
             return;
         }
-        gerogian.setYear(year);
+        georgian.setYear(year);
     }
 
     @Override
     public int getWeekStartFrom() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getWeekStartFrom();
-        return gerogian.getWeekStartFrom();
+        return georgian.getWeekStartFrom();
     }
 
     @Override
     public int getLastDayOfMonth() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getLastDayOfMonth();
-        return gerogian.getLastDayOfMonth();
+        return georgian.getLastDayOfMonth();
     }
 
     @Override
     public int getDayOfMonth() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getDayOfMonth();
-        return gerogian.getDayOfMonth();
+        return georgian.getDayOfMonth();
     }
 
     @Override
     public int getMonth() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getMonth();
-        return gerogian.getMonth();
+        return georgian.getMonth();
     }
 
     @Override
     public String getMonthName() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getMonthName();
-        return gerogian.getMonthName();
+        return georgian.getMonthName();
     }
 
     @Override
     public int getYear() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getYear();
-        return gerogian.getYear();
+        return georgian.getYear();
     }
 
     @Override
     public int lengthOfMonth() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.lengthOfMonth();
-        return gerogian.lengthOfMonth();
+        return georgian.lengthOfMonth();
     }
 
     @Override
     public int getCurrentMonth() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getCurrentMonth();
-        return gerogian.getCurrentMonth();
+        return georgian.getCurrentMonth();
     }
 
     @Override
     public int getOffsetMonthCount() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getOffsetMonthCount();
-        return gerogian.getOffsetMonthCount();
+        return georgian.getOffsetMonthCount();
     }
 
     public String[] getMonths() {
         if(mMode == HijriCalendarDialog.Mode.Hijri.getModeValue())
             return hijri.getMonths();
-        return gerogian.getMonths();
+        return georgian.getMonths();
     }
 }
