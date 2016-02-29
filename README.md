@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/badge/Android-CustomView-blue.svg)
 ![](https://img.shields.io/crates/l/rustc-serialize.svg)
-![](https://img.shields.io/badge/version-1.3.4-blue.svg)
+![](https://img.shields.io/badge/version-1.3.5-blue.svg)
 
 This library offers a hijri (Islamic Calendar) Date Picker  designed on [Google's Material Design Principals For Pickers](http://www.google.com/design/spec/components/pickers.html) for Android 4.1 (API 16) +.
 
@@ -21,14 +21,14 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.hijridatepicker</groupId>
 <artifactId>libary</artifactId>
-<version>1.3.4</version>
+<version>1.3.5</version>
 </dependency>
 ```
 **Gradle**
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.hijridatepicker:libary:1.3.4'
+	compile 'net.alhazmy13.hijridatepicker:libary:1.3.5'
 }
 ```
 
