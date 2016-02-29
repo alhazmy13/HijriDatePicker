@@ -2,8 +2,11 @@ package net.alhazmy13.hijridatepicker;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.graphics.PorterDuff;
+import android.os.Build;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.AppCompatButton;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -120,18 +123,14 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         yearTextView = (TextView) findViewById(R.id.yearTextView);
         doneButton=(Button)findViewById(R.id.doneButton);
         cancelButton =(Button)findViewById(R.id.closeButton);
-        doneButton.getBackground().setColorFilter(context.getResources().getColor(R.color.hijri_date_picker_accent_color), PorterDuff.Mode.MULTIPLY);
-        cancelButton.getBackground().setColorFilter(context.getResources().getColor(R.color.hijri_date_picker_accent_color), PorterDuff.Mode.MULTIPLY);
+        setButtonTint(doneButton);
+        setButtonTint(cancelButton);
         days=context.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
-<<<<<<< HEAD
         if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())
             callSwitchLang("ar");
         else if(GeneralAttribute.language == HijriCalendarDialog.Language.English.getLanguageValue())
             callSwitchLang("en");
-        calendarInstance = new CalendarInstance(context,GeneralAttribute.mode);
-=======
-        if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
         calendarInstance = new CalendarInstance(context,GeneralAttribute.mode.getModeValue());
         if (GeneralAttribute.setDefaultDate)
         {
@@ -139,9 +138,15 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             calendarInstance.setMonth(GeneralAttribute.defaultMonth);
             calendarInstance.setYear(GeneralAttribute.defaultYear);
         }
->>>>>>> c5fbecb437ed0012cb0ff07d2f0b5e9abafa8771
     }
 
+    public  void setButtonTint(Button button) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP && button instanceof AppCompatButton) {
+            ((AppCompatButton) button).setSupportBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.hijri_date_picker_accent_color)));
+        } else {
+            ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(context.getResources().getColor(R.color.hijri_date_picker_accent_color)));
+        }
+    }
     private void initHeaderOfCalender() {
         TableRow.LayoutParams params = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         params.setMargins(0, 8, 0, 8);

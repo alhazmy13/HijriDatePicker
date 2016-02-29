@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context=".MainActivity">
+    android:layout_height="match_parent" >
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,7 +19,7 @@
             android:id="@+id/dayTextView"
             android:textColor="#FFFFFF"
             android:layout_margin="8dp"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:textColor="#FFFFFF"
             android:layout_margin="8dp"
             android:textStyle="bold"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
             android:id="@+id/yearTextView"
             android:textColor="#FFFFFF"
             android:layout_margin="8dp"
-            android:textSize="24dp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -79,5 +79,5 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/calendarTableLayout"
         android:padding="16dp"
-        android:background="#ececec"></TableLayout>
+        android:background="#ececec"/>
 </RelativeLayout>
