@@ -3,8 +3,6 @@ package net.alhazmy13.hijridatepicker.calendar;
 import android.content.Context;
 import android.util.Log;
 
-import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
-
 import net.alhazmy13.hijridatepicker.R;
 
 import java.util.Calendar;
@@ -129,5 +127,10 @@ class GregorianCalendar implements CustomCalendarView{
     @Override
     public String[] getMonths() {
         return monthNames;
+    }
+
+    @Override
+    public int getCurrentYear() {
+        return countYear;
     }
 }

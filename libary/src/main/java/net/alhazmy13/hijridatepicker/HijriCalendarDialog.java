@@ -52,6 +52,7 @@ public class HijriCalendarDialog {
             GeneralAttribute.gregorian_max = 2050;
             GeneralAttribute.gregorian_min = 2013;
             GeneralAttribute.language = Language.Default.getLanguageValue();
+            GeneralAttribute.scrolling = true;
         }
         public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
             GeneralAttribute.hijri_max=maxYear;
@@ -69,6 +70,10 @@ public class HijriCalendarDialog {
             return this;
         }
 
+        public HijriCalendarDialog.Builder setEnableScrolling(boolean scrolling){
+            GeneralAttribute.scrolling = scrolling;
+            return this;
+        }
 
         public HijriCalendarDialog.Builder setMaxGregorianYear(int maxYear) {
             GeneralAttribute.gregorian_max=maxYear;
@@ -99,7 +104,16 @@ public class HijriCalendarDialog {
             return this;
         }
         public HijriCalendarDialog.Builder setMode(Mode mode){
-            GeneralAttribute.mode = mode.getModeValue();
+            GeneralAttribute.mode = mode;
+            return this;
+        }
+        public HijriCalendarDialog.Builder setDefaultHijriDate(int day, int month, int year){
+            if (month>11 || month<0)
+                throw new RuntimeException("Month must be between 0-11");
+            GeneralAttribute.setDefaultDate = true;
+            GeneralAttribute.defaultDay = day;
+            GeneralAttribute.defaultMonth = month>11?0:month;
+            GeneralAttribute.defaultYear = year;
             return this;
         }
 

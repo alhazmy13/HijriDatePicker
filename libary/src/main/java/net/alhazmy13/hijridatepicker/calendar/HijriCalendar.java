@@ -134,4 +134,9 @@ class HijriCalendar implements CustomCalendarView {
     public String[] getMonths() {
         return monthNames;
     }
+
+    @Override
+    public int getCurrentYear() {
+        return countYear;
+    }
 }

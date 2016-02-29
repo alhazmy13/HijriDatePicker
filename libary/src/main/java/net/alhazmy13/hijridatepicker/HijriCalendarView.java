@@ -38,6 +38,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
 
 
     public interface OnDateSetListener{
+        @Deprecated
         void onDateSet(int year, int month, int day);
     }
 
@@ -123,11 +124,22 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         cancelButton.getBackground().setColorFilter(context.getResources().getColor(R.color.hijri_date_picker_accent_color), PorterDuff.Mode.MULTIPLY);
         days=context.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
+<<<<<<< HEAD
         if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())
             callSwitchLang("ar");
         else if(GeneralAttribute.language == HijriCalendarDialog.Language.English.getLanguageValue())
             callSwitchLang("en");
         calendarInstance = new CalendarInstance(context,GeneralAttribute.mode);
+=======
+        if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
+        calendarInstance = new CalendarInstance(context,GeneralAttribute.mode.getModeValue());
+        if (GeneralAttribute.setDefaultDate)
+        {
+            calendarInstance.setDay(GeneralAttribute.defaultDay);
+            calendarInstance.setMonth(GeneralAttribute.defaultMonth);
+            calendarInstance.setYear(GeneralAttribute.defaultYear);
+        }
+>>>>>>> c5fbecb437ed0012cb0ff07d2f0b5e9abafa8771
     }
 
     private void initHeaderOfCalender() {
@@ -182,7 +194,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                     textView.setText(" ");
 
                 }
-                if (calendarInstance.isCurrentMonth() && count - 1 == calendarInstance.getDayOfMonth()) {
+                if ((calendarInstance.isCurrentMonth() || (calendarInstance.getCurrentMonth() == GeneralAttribute.defaultMonth && calendarInstance.getCurrentYear() == GeneralAttribute.defaultYear)) && count - 1 == calendarInstance.getDayOfMonth()) {
                     textView.setBackgroundColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
                     textView.setTextColor(context.getResources().getColor(android.R.color.white));
                     lastSelectedDay = textView;
@@ -222,7 +234,8 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             @Override
             public void onClick(View view) {
                 if (GeneralAttribute.onDateSetListener != null) {
-                        GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth()+1, calendarInstance.getDayOfMonth());
+                        GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
+
 
                 }
                 dismiss();
@@ -262,32 +275,34 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x1 = 0,x2;
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                float deltaX = x2 - x1;
+        if(GeneralAttribute.scrolling) {
+            float x1 = 0, x2;
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    x1 = event.getX();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    x2 = event.getX();
+                    float deltaX = x2 - x1;
 
-                if (Math.abs(deltaX) > MIN_DISTANCE) {
-                    // Left to Right swipe action
-                    if (x2 > x1) {
-                        calendarInstance.plusMonth();
-                        slideLeftToRight();
-                        initDays();
+                    if (Math.abs(deltaX) > MIN_DISTANCE) {
+                        // Left to Right swipe action
+                        if (x2 > x1) {
+                            calendarInstance.plusMonth();
+                            slideLeftToRight();
+                            initDays();
+                        }
+
+                        // Right to left swipe action
+                        else {
+                            calendarInstance.minusMonth();
+                            slideRightToLeft();
+                            initDays();
+                        }
+
                     }
-
-                    // Right to left swipe action
-                    else {
-                        calendarInstance.minusMonth();
-                        slideRightToLeft();
-                        initDays();
-                    }
-
-                }
-                break;
+                    break;
+            }
         }
         return super.onTouchEvent(event);
     }

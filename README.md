@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/badge/Android-CustomView-blue.svg)
 ![](https://img.shields.io/crates/l/rustc-serialize.svg)
-![](https://img.shields.io/badge/version-1.3.2-blue.svg)
+![](https://img.shields.io/badge/version-1.3.3-blue.svg)
 
 This library offers a hijri (Islamic Calendar) Date Picker  designed on [Google's Material Design Principals For Pickers](http://www.google.com/design/spec/components/pickers.html) for Android 4.1 (API 16) +.
 
@@ -21,14 +21,14 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.hijridatepicker</groupId>
 <artifactId>libary</artifactId>
-<version>1.3.2</version>
+<version>1.3.3</version>
 </dependency>
 ```
 **Gradle**
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.hijridatepicker:libary:1.3.2'
+	compile 'net.alhazmy13.hijridatepicker:libary:1.3.3'
 }
 ```
 
@@ -42,10 +42,13 @@ After adding the library, you need to:
 
 ### Implement an `OnDateSetListener`
 In order to receive the date  set in the picker, you will need to implement the `OnDateSetListener`  interfaces. Typically this will be the `Dialog`  that creates the Pickers. The callbacks use the same API as the standard Android pickers.
+
+<u><b>Note:</b> Months start from 0.</u>
+
 ```java
   @Override
     public void onDateSet(int year, int month, int day) {
-        Toast.makeText(getApplicationContext(),year+"/"+month+"/"+day+"/",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),year+"/"+(month+1)+"/"+day+"/",Toast.LENGTH_SHORT).show();
 
     }
 ```
@@ -67,35 +70,39 @@ You can theme the pickers by overwriting the color resources `hijri_date_picker_
 ### Additional Options
 * `SetUILanguage` You can change the display language to your preferred language `ARABIC` or `ENGLISH`
 ```java
-dialog.setUILanguage(HijriCalendarDialog.Language.Arabic);
+.setUILanguage(HijriCalendarDialog.Language.Arabic);
 ```
 * `setMode` to change the mode from `Hijri` to `Gregorian`
 ```java
-dialog.setMode(HijriCalendarDialog.Mode.Gregorian)
+.setMode(HijriCalendarDialog.Mode.Gregorian)
 ```
 * `setMaxHijriYear` To set the maximum Hijri year for dialg
 ```java
-dialog.setMaxHijriYear(1440);
+.setMaxHijriYear(1440);
 ```
 * `setMinHijriYear` To set the minimum hijri year for dialg
 ```java
-dialog.setMinYear(1437);
+.setMinYear(1437);
 ```
 * `setMinMaxHijriYear` To set the minimum and maximum hijri year for dialog
 ```java
-dialog.setMinMaxHijriYear(1430,1440);
+.setMinMaxHijriYear(1430,1440);
 ```
 * `setMaxGregorianYear` To set the maximum Gregorian year for dialg
 ```java
-dialog.setMaxGregorianYear(1440);
+.setMaxGregorianYear(1440);
 ```
 * `setMinGregorianYear` To set the minimum Gregorian year for dialg
 ```java
-dialog.setMinGregorianYear(1437);
+.setMinGregorianYear(1437);
 ```
 * `setMinMaxGregorianYear` To set the minimum and maximum Gregorian year for dialog
 ```java
-dialog.setMinMaxGregorianYear(1430,1440);
+.setMinMaxGregorianYear(1430,1440);
+```
+* `setDefaultHijriDate`
+* ```java
+.setDefaultHijriDate(8, 0, 1437) //months start from 0
 ```
 
 ### Credits 

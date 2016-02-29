@@ -19,12 +19,23 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarView
             @Override
             public void onClick(View view) {
 
+                //Without setting default date
+//                new HijriCalendarDialog.Builder(MainActivity.this)
+//                        .setOnDateSetListener(MainActivity.this)
+//                        .setMinMaxHijriYear(1430,1450)
+//                        .setMinMaxGregorianYear(2013,2020)
+//                        .setUILanguage(HijriCalendarDialog.Language.English)
+//                        .setMode(HijriCalendarDialog.Mode.Hijri)
+//                        .show();
 
+                //Setting default date
                 new HijriCalendarDialog.Builder(MainActivity.this)
                         .setOnDateSetListener(MainActivity.this)
                         .setMinMaxHijriYear(1430,1450)
                         .setMinMaxGregorianYear(2013,2020)
                         .setMode(HijriCalendarDialog.Mode.Hijri)
+                        .setDefaultHijriDate(8, 0, 1437)//months start from 0
+                        .setEnableScrolling(false)
                         .show();
 
 
@@ -35,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarView
 
     @Override
     public void onDateSet(int year, int month, int day) {
-        ((TextView) findViewById(R.id.textView)).setText(year+"/"+month+"/"+day);
+        ((TextView) findViewById(R.id.textView)).setText(year+"/"+(month+1)+"/"+day);
     }
+
+
 }
