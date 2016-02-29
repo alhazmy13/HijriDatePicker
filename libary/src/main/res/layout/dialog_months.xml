@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/muḥarram"
+                android:text="@string/muharram"
                 android:background="@drawable/hijri_date_picker_card"
                 android:id="@+id/m1TextView"
                 android:layout_weight="1"

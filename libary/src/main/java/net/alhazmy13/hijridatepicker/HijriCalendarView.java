@@ -3,6 +3,7 @@ package net.alhazmy13.hijridatepicker;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.PorterDuff;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.util.Locale;
 
 /**
  * Created by Alhazmy13 on 10/15/15.
+ *  HijriDatePicker
  */
 public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, View.OnClickListener,YearDialog.OnYearChanged,DefaultValue {
     private Context context;
@@ -95,7 +97,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         TextView temp = (TextView) view;
         if (!temp.getText().toString().isEmpty()) {
             lastSelectedDay.setTextColor(context.getResources().getColor(android.R.color.darker_gray));
-            lastSelectedDay.setBackground(null);
+            lastSelectedDay.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
 
 
             temp.setBackgroundColor(context.getResources().getColor(R.color.hijri_date_picker_accent_color));
@@ -117,9 +119,14 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         yearTextView = (TextView) findViewById(R.id.yearTextView);
         doneButton=(Button)findViewById(R.id.doneButton);
         cancelButton =(Button)findViewById(R.id.closeButton);
+        doneButton.getBackground().setColorFilter(context.getResources().getColor(R.color.hijri_date_picker_accent_color), PorterDuff.Mode.MULTIPLY);
+        cancelButton.getBackground().setColorFilter(context.getResources().getColor(R.color.hijri_date_picker_accent_color), PorterDuff.Mode.MULTIPLY);
         days=context.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
-        if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())callSwitchLang("ar"); else callSwitchLang("en");
+        if(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())
+            callSwitchLang("ar");
+        else if(GeneralAttribute.language == HijriCalendarDialog.Language.English.getLanguageValue())
+            callSwitchLang("en");
         calendarInstance = new CalendarInstance(context,GeneralAttribute.mode);
     }
 
@@ -168,11 +175,11 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                         textView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue()?Utility.toArabicNumbers(count+""):count+"");
                         count++;
                     } else {
-                        textView.setText("");
+                        textView.setText(" ");
 
                     }
                 } else {
-                    textView.setText("");
+                    textView.setText(" ");
 
                 }
                 if (calendarInstance.isCurrentMonth() && count - 1 == calendarInstance.getDayOfMonth()) {

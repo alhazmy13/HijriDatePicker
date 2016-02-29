@@ -32,7 +32,8 @@ public class HijriCalendarDialog {
 
     public enum Language{
         Arabic(1),
-        English(2);
+        English(2),
+        Default(3);
         private int language;
         Language(int language) {
             this.language = language;
@@ -50,7 +51,7 @@ public class HijriCalendarDialog {
             GeneralAttribute.hijri_min = 1437;
             GeneralAttribute.gregorian_max = 2050;
             GeneralAttribute.gregorian_min = 2013;
-            GeneralAttribute.language = Language.English.getLanguageValue();
+            GeneralAttribute.language = Language.Default.getLanguageValue();
         }
         public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
             GeneralAttribute.hijri_max=maxYear;

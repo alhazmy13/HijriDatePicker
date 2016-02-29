@@ -1,11 +1,10 @@
 package net.alhazmy13.hijricalenderexample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
 import net.alhazmy13.hijridatepicker.HijriCalendarView;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarView
                         .setOnDateSetListener(MainActivity.this)
                         .setMinMaxHijriYear(1430,1450)
                         .setMinMaxGregorianYear(2013,2020)
-                        .setUILanguage(HijriCalendarDialog.Language.English)
                         .setMode(HijriCalendarDialog.Mode.Hijri)
                         .show();
 

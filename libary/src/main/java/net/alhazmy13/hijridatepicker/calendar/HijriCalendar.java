@@ -22,7 +22,7 @@ class HijriCalendar implements CustomCalendarView {
     public HijriCalendar(Context context){
         calendar=new UmmalquraCalendar();
         monthNames=new String[]{
-                context.getResources().getString(R.string.muḥarram),
+                context.getResources().getString(R.string.muharram),
                 context.getResources().getString(R.string.safar),
                 context.getResources().getString(R.string.rabi_i),
                 context.getResources().getString(R.string.rabi_ii),
