@@ -99,7 +99,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
     @Override
     public void onClick(View view) {
         TextView temp = (TextView) view;
-        if (!temp.getText().toString().isEmpty()) {
+        if (!temp.getText().toString().trim().isEmpty()) {
             lastSelectedDay.setTextColor(context.getResources().getColor(android.R.color.darker_gray));
             lastSelectedDay.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
 
