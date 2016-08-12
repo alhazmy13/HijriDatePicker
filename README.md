@@ -101,12 +101,13 @@ You can theme the pickers by overwriting the color resources `hijri_date_picker_
 .setMinMaxGregorianYear(1430,1440);
 ```
 * `setDefaultHijriDate`
-* ```java
+```java
 .setDefaultHijriDate(8, 0, 1437) //months start from 0
 ```
 
-### Credits 
-Thanks to  [ummalqura-calendar Library](https://github.com/msarhan/ummalqura-calendar) and [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations).
+## Credits
+* [ummalqura-calendar Library](https://github.com/msarhan/ummalqura-calendar) 
+* [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations).
 
 
 ## License
