@@ -1,0 +1,112 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/dashBoadLinerLayout"
+        android:background="@color/hijri_date_picker_accent_color"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/dayTextView"
+            android:textColor="#FFFFFF"
+            android:layout_margin="8dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="محرم"
+            android:id="@+id/monthTextView"
+            android:textColor="#FFFFFF"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1437"
+            android:id="@+id/yearTextView"
+            android:textColor="#FFFFFF"
+            android:layout_margin="8dp"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+
+            android:gravity="start">
+
+
+
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hijri_date_picker_done"
+                android:id="@+id/doneButton"
+                android:backgroundTint="@color/hijri_date_picker_accent_color"
+                android:textColor="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Colored" />
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hijri_date_picker_cancel"
+                android:id="@+id/closeButton"
+                android:backgroundTint="@color/hijri_date_picker_accent_color"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ececec">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/leftArrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chevron_left"/>
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="شوال 1437"/>
+        <ImageView
+            android:id="@+id/rightArrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chevron_right"/>
+    </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/calendarTableLayout"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+</LinearLayout>

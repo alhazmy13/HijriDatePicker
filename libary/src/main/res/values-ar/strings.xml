@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hijri_date_picker_cancel">الغاء</string>
-    <string name="dhu_alhijjah">ذو الحجة</string>
     <string name="hijri_date_picker_done">موافق</string>
+
+    <string name="dhu_alhijjah">ذو الحجة</string>
     <string name="dhu_alqadah">ذو القعدة</string>
     <string name="jamada_i">جماد الاول</string>
     <string name="jamada_ii">جماد الثاني</string>
