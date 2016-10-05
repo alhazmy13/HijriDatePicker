@@ -44,7 +44,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
     private Button doneButton, cancelButton;
     private TableRow daysHeader;
     private ImageView next,previous;
-
+    private boolean isLandArabic=false;
     /**
      * @param mContext
      */
@@ -57,6 +57,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             {
                 this.setContentView(R.layout.temp);
                 initLand();
+                isLandArabic=true;
             }else
             {
                 this.setContentView(R.layout.dialog_hijri_calendar_land);
@@ -126,6 +127,11 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                 lastSelectedDay = temp;
                 dayTextView.setText(temp.getText().toString());
                 calendarInstance.setDay(Integer.parseInt(temp.getText().toString()));
+                //TODO in case of landscape Arabic
+                if (isLandArabic) {
+                    GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
+                    dismiss();
+                }
 
             }
         }
