@@ -1,5 +1,6 @@
 package net.alhazmy13.hijridatepicker;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -8,12 +9,14 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -48,10 +51,25 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
     HijriCalendarView(final Context mContext) {
         super(mContext);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (GeneralAttribute.uiView == HijriCalendarDialog.UiView.Default)
-            this.setContentView(R.layout.dialog_hijri_calendar_land);
+        if (GeneralAttribute.uiView == HijriCalendarDialog.UiView.Land)
+        {
+            if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())
+            {
+                this.setContentView(R.layout.temp);
+                initLand();
+            }else
+            {
+                this.setContentView(R.layout.dialog_hijri_calendar_land);
+                initLand();
+            }
+
+        }
+
         else
+        {
             this.setContentView(R.layout.dialog_hijri_calendar);
+            initButtons();
+        }
 
         this.mContext = mContext;
 
@@ -121,15 +139,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         dayTextView = (TextView) findViewById(R.id.dayTextView);
         monthTextView = (TextView) findViewById(R.id.monthTextView);
         yearTextView = (TextView) findViewById(R.id.yearTextView);
-        doneButton = (Button) findViewById(R.id.doneButton);
-        cancelButton = (Button) findViewById(R.id.closeButton);
-        next = (ImageView) findViewById(R.id.rightArrowImageView);
-        previous = (ImageView) findViewById(R.id.leftArrowImageView);
         dateTextView = (TextView) findViewById(R.id.dateTextView);
-        next.setOnClickListener(this);
-        previous.setOnClickListener(this);
-        setButtonTint(doneButton);
-        setButtonTint(cancelButton);
         days = mContext.getResources().getStringArray(R.array.hijri_date_picker_days);
         textViewList = new ArrayList<>();
         if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())
@@ -144,6 +154,61 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
         }
     }
 
+    //region init for land
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void initLand ()
+    {
+        next = (ImageView) findViewById(R.id.leftArrowImageView);
+        previous = (ImageView) findViewById(R.id.rightArrowImageView);
+
+        next.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            calendarInstance.plusMonth();
+            slideLeftToRight();
+            initDays();
+        }
+    });
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendarInstance.minusMonth();
+                slideLeftToRight();
+                initDays();
+            }
+        });
+
+    }
+    //endregion
+
+    //region init Buttons
+    private void initButtons()
+    {
+        doneButton = (Button) findViewById(R.id.doneButton);
+        cancelButton = (Button) findViewById(R.id.closeButton);
+        setButtonTint(doneButton);
+        setButtonTint(cancelButton);
+
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (GeneralAttribute.onDateSetListener != null) {
+                    GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
+
+
+                }
+                dismiss();
+            }
+        });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+    }
+    //endregion
     public void setButtonTint(Button button) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP && button instanceof AppCompatButton) {
             ((AppCompatButton) button).setSupportBackgroundTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.hijri_date_picker_accent_color)));
@@ -243,23 +308,6 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
                 yearDialog.setYear(Integer.parseInt(yearTextView.getText().toString()));
                 yearDialog.show();
                 return false;
-            }
-        });
-        doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (GeneralAttribute.onDateSetListener != null) {
-                    GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
-
-
-                }
-                dismiss();
-            }
-        });
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
             }
         });
     }
