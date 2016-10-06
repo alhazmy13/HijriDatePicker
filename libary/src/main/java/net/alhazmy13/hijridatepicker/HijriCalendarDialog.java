@@ -43,6 +43,11 @@ public class HijriCalendarDialog {
         }
 
     }
+
+    public enum UiView {
+        Default,Land
+    }
+
     public static class  Builder{
         public Builder(Context context) {
             GeneralAttribute.mContext=context;
@@ -53,6 +58,7 @@ public class HijriCalendarDialog {
             GeneralAttribute.gregorian_min = 2013;
             GeneralAttribute.language = Language.Default.getLanguageValue();
             GeneralAttribute.scrolling = true;
+            GeneralAttribute.uiView = UiView.Default;
         }
         public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
             GeneralAttribute.hijri_max=maxYear;
@@ -93,6 +99,11 @@ public class HijriCalendarDialog {
 
         public HijriCalendarDialog.Builder setUILanguage(Language language){
             GeneralAttribute.language = language.getLanguageValue();
+            return this;
+        }
+
+        public HijriCalendarDialog.Builder setUIView(UiView uiView){
+            GeneralAttribute.uiView = uiView;
             return this;
         }
         public  HijriCalendarDialog.Builder setOnDateSetListener(HijriCalendarView.OnDateSetListener onDateSetListener){
