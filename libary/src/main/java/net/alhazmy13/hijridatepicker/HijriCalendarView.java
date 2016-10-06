@@ -214,7 +214,8 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             }
         });
     }
-    //endregion
+
+
     public void setButtonTint(Button button) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP && button instanceof AppCompatButton) {
             ((AppCompatButton) button).setSupportBackgroundTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.hijri_date_picker_accent_color)));
@@ -222,6 +223,7 @@ public class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChan
             ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(mContext.getResources().getColor(R.color.hijri_date_picker_accent_color)));
         }
     }
+    //endregion
 
     private void initHeaderOfCalender() {
         TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,1f);
