@@ -8,36 +8,43 @@ package net.alhazmy13.hijridatepicker;
 
 import android.content.Context;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by Alhazmy13 on 1/6/16.
- *  HijriDatePicker
+ * HijriDatePicker
  */
 public class HijriCalendarDialog {
 
-    public HijriCalendarDialog(){
+    public HijriCalendarDialog() {
 
     }
-   public enum Mode{
+
+    public enum Mode {
         Hijri(1),
         Gregorian(2);
         private int mode;
+
         Mode(int mode) {
             this.mode = mode;
         }
+
         public int getModeValue() {
             return mode;
         }
 
     }
 
-    public enum Language{
+    public enum Language {
         Arabic(1),
         English(2),
         Default(3);
         private int language;
+
         Language(int language) {
             this.language = language;
         }
+
         public int getLanguageValue() {
             return language;
         }
@@ -45,13 +52,13 @@ public class HijriCalendarDialog {
     }
 
     public enum UiView {
-        Default,Land
+        Default, Land
     }
 
-    public static class  Builder{
+    public static class Builder {
         public Builder(Context context) {
-            GeneralAttribute.mContext=context;
-            GeneralAttribute.title="";
+            GeneralAttribute.context = new WeakReference<>(context);
+            GeneralAttribute.title = "";
             GeneralAttribute.hijri_max = 1450;
             GeneralAttribute.hijri_min = 1437;
             GeneralAttribute.gregorian_max = 2050;
@@ -60,70 +67,75 @@ public class HijriCalendarDialog {
             GeneralAttribute.scrolling = true;
             GeneralAttribute.uiView = UiView.Default;
         }
+
         public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
-            GeneralAttribute.hijri_max=maxYear;
+            GeneralAttribute.hijri_max = maxYear;
             return this;
         }
 
         public HijriCalendarDialog.Builder setMinHijriYear(int minYear) {
-            GeneralAttribute.hijri_min=minYear;
+            GeneralAttribute.hijri_min = minYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinMaxHijriYear(int min,int max){
+        public HijriCalendarDialog.Builder setMinMaxHijriYear(int min, int max) {
             GeneralAttribute.hijri_max = max;
             GeneralAttribute.hijri_min = min;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setEnableScrolling(boolean scrolling){
+        public HijriCalendarDialog.Builder setEnableScrolling(boolean scrolling) {
             GeneralAttribute.scrolling = scrolling;
             return this;
         }
 
         public HijriCalendarDialog.Builder setMaxGregorianYear(int maxYear) {
-            GeneralAttribute.gregorian_max=maxYear;
+            GeneralAttribute.gregorian_max = maxYear;
             return this;
         }
 
         public HijriCalendarDialog.Builder setMinGregorianYear(int minYear) {
-            GeneralAttribute.gregorian_min=minYear;
+            GeneralAttribute.gregorian_min = minYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinMaxGregorianYear(int min,int max){
+        public HijriCalendarDialog.Builder setMinMaxGregorianYear(int min, int max) {
             GeneralAttribute.gregorian_max = max;
             GeneralAttribute.gregorian_min = min;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setUILanguage(Language language){
+        public HijriCalendarDialog.Builder setUILanguage(Language language) {
             GeneralAttribute.language = language.getLanguageValue();
             return this;
         }
 
-        public HijriCalendarDialog.Builder setUIView(UiView uiView){
+        public HijriCalendarDialog.Builder setUIView(UiView uiView) {
             GeneralAttribute.uiView = uiView;
             return this;
         }
-        public  HijriCalendarDialog.Builder setOnDateSetListener(HijriCalendarView.OnDateSetListener onDateSetListener){
+
+        public HijriCalendarDialog.Builder setOnDateSetListener(HijriCalendarView.OnDateSetListener onDateSetListener) {
             GeneralAttribute.onDateSetListener = onDateSetListener;
             return this;
         }
-        public HijriCalendarDialog.Builder show(){
-            new HijriCalendarView(GeneralAttribute.mContext).show();
+
+        public HijriCalendarDialog.Builder show() {
+            new HijriCalendarView(GeneralAttribute.context.get()).show();
             return this;
         }
-        public HijriCalendarDialog.Builder setMode(Mode mode){
+
+        public HijriCalendarDialog.Builder setMode(Mode mode) {
             GeneralAttribute.mode = mode;
             return this;
         }
-        public HijriCalendarDialog.Builder setDefaultHijriDate(int day, int month, int year){
-            if (month>11 || month<0)
+
+        public HijriCalendarDialog.Builder setDefaultHijriDate(int day, int month, int year) {
+            if (month > 11 || month < 0)
                 throw new RuntimeException("Month must be between 0-11");
             GeneralAttribute.setDefaultDate = true;
             GeneralAttribute.defaultDay = day;
-            GeneralAttribute.defaultMonth = month>11?0:month;
+            GeneralAttribute.defaultMonth = month > 11 ? 0 : month;
             GeneralAttribute.defaultYear = year;
             return this;
         }

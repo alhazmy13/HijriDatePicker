@@ -6,13 +6,12 @@ import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
 
 /**
  * Created by Alhazmy13 on 2/3/16.
+ * HijriDatePicker
  */
 public class CalendarInstance implements CustomCalendarView{
     private HijriCalendar hijri;
     private GregorianCalendar georgian;
-    private Context mContext;
     private int mMode;
-    private int currentYear;
 
     public CalendarInstance(Context context, int mode){
         this.hijri = new HijriCalendar(context);

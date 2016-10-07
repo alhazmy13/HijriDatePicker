@@ -11,22 +11,20 @@ import java.util.ArrayList;
 
 /**
  * Created by Alhazmy13 on 10/15/15.
+ * HijriDatePicker
  */
 class MonthDialog extends Dialog implements View.OnTouchListener {
     private Context mContext;
-    ArrayList<TextView> textViews=new ArrayList<>();
+    private ArrayList<TextView> textViews=new ArrayList<>();
     private OnMonthChanged onMonthChanged;
-    private int currentMonth;
-    private String[] monthNames;
 
-    public void setCurrentMonth(int currentMonth) {
-        this.currentMonth = currentMonth;
+    void setCurrentMonth(int currentMonth) {
         textViews.get(currentMonth).setBackground(mContext.getResources().getDrawable(R.drawable.hijri_date_picker_card_selected));
         textViews.get(currentMonth).setTextColor(mContext.getResources().getColor(android.R.color.white));
 
     }
 
-    public void setMonthNames(String[] monthNames) {
+    void setMonthNames(String[] monthNames) {
         for (int i = 0; i < monthNames.length; i++) {
             textViews.get(i).setText(monthNames[i]);
         }
@@ -43,7 +41,7 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
      *
      * @param listen
      */
-    public void setOnDateChanged(OnMonthChanged listen) {
+    void setOnDateChanged(OnMonthChanged listen) {
         onMonthChanged = listen;
     }
 
@@ -51,7 +49,7 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
      *
      * @param context
      */
-    public MonthDialog(Context context) {
+    MonthDialog(Context context) {
         super(context);
         this.mContext = context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -90,7 +88,5 @@ class MonthDialog extends Dialog implements View.OnTouchListener {
         return false;
     }
 
-    public void updateMonthTexts(){
 
-    }
 }

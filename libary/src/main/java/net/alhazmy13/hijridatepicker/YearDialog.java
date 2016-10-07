@@ -23,26 +23,21 @@ import android.widget.TextView;
  * HijriDatePicker
  */
 class YearDialog extends Dialog implements DialogInterface.OnDismissListener,View.OnClickListener {
-    private Context mContext;
     private NumberPicker numberPicker;
     private OnYearChanged onYearChanged;
-    private Button okButton;
-    private int year;
 
 
     interface OnYearChanged {
         void onYearChanged(int year);
 
     }
-    private Button ok,close;
-    protected void setOnYearChanged(OnYearChanged listen) {
+    void setOnYearChanged(OnYearChanged listen) {
         onYearChanged = listen;
     }
-    public YearDialog(Context context) {
+    YearDialog(Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.dialog_year);
-        this.mContext=context;
         this.setOnDismissListener(this);
         initViews();
         if(GeneralAttribute.mode.getModeValue() == HijriCalendarDialog.Mode.Hijri.getModeValue()) {
@@ -57,7 +52,7 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener,Vie
 
     private void initViews() {
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
-        okButton = (Button) findViewById(R.id.okBT);
+        Button okButton = (Button) findViewById(R.id.okBT);
         okButton.setOnClickListener(this);
     }
 

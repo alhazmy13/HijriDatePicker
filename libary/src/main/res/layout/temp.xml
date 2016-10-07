@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ececec"
         android:orientation="vertical">
@@ -38,11 +38,10 @@
                 android:src="@drawable/ic_chevron_right" />
         </LinearLayout>
 
-        <TableLayout
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/calendarTableLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

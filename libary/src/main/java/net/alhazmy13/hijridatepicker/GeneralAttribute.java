@@ -8,11 +8,14 @@ package net.alhazmy13.hijridatepicker;
 
 import android.content.Context;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by Alhazmy13 on 1/6/16.
+ * HijriDatePicker
  */
 class GeneralAttribute {
-    static Context mContext;
+    static WeakReference<Context> context;
     static String title;
     static int language;
     static HijriCalendarView.OnDateSetListener onDateSetListener;

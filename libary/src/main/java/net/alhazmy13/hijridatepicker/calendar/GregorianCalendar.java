@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 /**
  * Created by Alhazmy13 on 10/14/15.
+ * HijriDatePicker
  */
 class GregorianCalendar implements CustomCalendarView{
     private static final String TAG = "GregorianCalendar";
@@ -16,7 +17,7 @@ class GregorianCalendar implements CustomCalendarView{
     private String[] monthNames;
     private int countMonth,countYear,currentMonth,currentYear;
 
-    public GregorianCalendar(Context context){
+    GregorianCalendar(Context context){
         calendar=Calendar.getInstance();
         monthNames=new String[]{
                 context.getResources().getString(R.string.January),
