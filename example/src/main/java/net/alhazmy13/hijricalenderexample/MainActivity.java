@@ -7,38 +7,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
-
 import net.alhazmy13.hijridatepicker.HijriCalendarDialog;
-import net.alhazmy13.hijridatepicker.HijriCalendarView;
 import net.alhazmy13.hijridatepicker.calendar.CalendarInstance;
 
-import java.util.Calendar;
+public class MainActivity extends AppCompatActivity implements HijriCalendarDialog.OnDateSetListener {
 
-public class MainActivity extends AppCompatActivity implements HijriCalendarView.OnDateSetListener {
+    private int day, month, year;
 
-    private int day,month,year;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CalendarInstance calendarInstance = new CalendarInstance(this,HijriCalendarDialog.Mode.Hijri.getModeValue());
-        day=calendarInstance.getDayOfMonth();
-        month=calendarInstance.getCurrentMonth();
-        year=calendarInstance.getCurrentYear();
-        Log.i("HijriPicker",year + "/" + (month + 1) + "/" + day);
+        CalendarInstance calendarInstance = new CalendarInstance(this, HijriCalendarDialog.Mode.Hijri.getModeValue());
+        day = calendarInstance.getDayOfMonth();
+        month = calendarInstance.getCurrentMonth();
+        year = calendarInstance.getCurrentYear();
+        Log.i("HijriPicker", year + "/" + (month + 1) + "/" + day);
 
         ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new HijriCalendarDialog.Builder(MainActivity.this)
-                        .setOnDateSetListener(MainActivity.this)
-                        .setMode(HijriCalendarDialog.Mode.Hijri)
-                        .setEnableScrolling(false)
+                        .listener(MainActivity.this)
+                        .mode(HijriCalendarDialog.Mode.Hijri)
                         .setUILanguage(HijriCalendarDialog.Language.Arabic)
-                        .setUIView(HijriCalendarDialog.UiView.Land)
-                        .setDefaultHijriDate(day,month,year)
+                        .setUIView(HijriCalendarDialog.UiView.Default)
+                        .defaultHijriDate(day, month, year)
                         .show();
 
             }

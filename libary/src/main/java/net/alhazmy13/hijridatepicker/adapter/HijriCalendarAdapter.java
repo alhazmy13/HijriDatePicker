@@ -21,10 +21,11 @@ public class HijriCalendarAdapter extends RecyclerView.Adapter<HijriCalendarAdap
 
     private List<HijriCalenderItem> items;
     private Context mContext;
-
-    public HijriCalendarAdapter(Context context, List<HijriCalenderItem> items) {
+    private OnDaySelected mOnDaySelected;
+    public HijriCalendarAdapter(Context context, OnDaySelected onDaySelected, List<HijriCalenderItem> items) {
         this.items = items;
         this.mContext = context;
+        this.mOnDaySelected = onDaySelected;
     }
 
     @Override
@@ -34,13 +35,20 @@ public class HijriCalendarAdapter extends RecyclerView.Adapter<HijriCalendarAdap
     }
 
     @Override
-    public void onBindViewHolder(HijriCalendarViewHolder holder, int position) {
+    public void onBindViewHolder(HijriCalendarViewHolder holder, final int position) {
         holder.textView.setText(String.valueOf(items.get(position).getText()));
         if (items.get(position).isCurrentDay()) {
-            holder.textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.hijri_date_picker_oval));
+            holder.textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.hijri_date_picker_card_selected));
             holder.textView.setTextColor(ContextCompat.getColor(mContext,android.R.color.white));
         }
-
+        if(items.get(position).getItemType() == HijriCalenderItem.Type.DAY){
+            holder.textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnDaySelected.daySelected(position);
+                }
+            });
+        }
     }
 
 

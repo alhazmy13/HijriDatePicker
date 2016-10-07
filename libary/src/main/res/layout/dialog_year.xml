@@ -10,7 +10,7 @@
         android:layout_gravity="center"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/dashBoadLinerLayout"
-        android:background="@color/hijri_date_picker_accent_color"
+        android:background="?colorPrimary"
         android:padding="16dp">
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/hijri_date_picker_done"
             android:id="@+id/okBT"
-            android:backgroundTint="@color/hijri_date_picker_accent_color"
+            android:backgroundTint="?colorPrimary"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 

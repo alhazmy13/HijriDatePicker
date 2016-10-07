@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="#ececec"
         android:orientation="vertical">
@@ -40,6 +40,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/calendarTableLayout"
+            android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -47,7 +48,7 @@
 
     <LinearLayout
         android:id="@+id/dashBoadLinerLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="?colorPrimary"
@@ -57,29 +58,32 @@
 
         <TextView
             android:id="@+id/dayTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="1"
+            android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/monthTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="محرم"
+            android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/yearTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="1437"
+            android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold" />

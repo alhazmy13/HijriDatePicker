@@ -40,11 +40,5 @@ class Utility {
                 .replace("0", "٠");
     }
 
-    static void setButtonTint(Context context, Button button) {
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP && button instanceof AppCompatButton) {
-            ((AppCompatButton) button).setSupportBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context,R.color.hijri_date_picker_accent_color)));
-        } else {
-            ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(ContextCompat.getColor(context,R.color.hijri_date_picker_accent_color)));
-        }
-    }
+
 }

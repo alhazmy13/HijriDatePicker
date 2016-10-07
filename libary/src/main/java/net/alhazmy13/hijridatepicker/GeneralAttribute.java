@@ -6,6 +6,7 @@
 
 package net.alhazmy13.hijridatepicker;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 
 import java.lang.ref.WeakReference;
@@ -18,7 +19,7 @@ class GeneralAttribute {
     static WeakReference<Context> context;
     static String title;
     static int language;
-    static HijriCalendarView.OnDateSetListener onDateSetListener;
+    static HijriCalendarDialog.OnDateSetListener onDateSetListener;
     static HijriCalendarDialog.Mode mode = HijriCalendarDialog.Mode.Hijri;
     static int hijri_min;
     static int hijri_max;

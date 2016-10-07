@@ -68,38 +68,34 @@ public class HijriCalendarDialog {
             GeneralAttribute.uiView = UiView.Default;
         }
 
-        public HijriCalendarDialog.Builder setMaxHijriYear(int maxYear) {
+        public HijriCalendarDialog.Builder MaxHijriYear(int maxYear) {
             GeneralAttribute.hijri_max = maxYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinHijriYear(int minYear) {
+        public HijriCalendarDialog.Builder MinHijriYear(int minYear) {
             GeneralAttribute.hijri_min = minYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinMaxHijriYear(int min, int max) {
+        public HijriCalendarDialog.Builder MinMaxHijriYear(int min, int max) {
             GeneralAttribute.hijri_max = max;
             GeneralAttribute.hijri_min = min;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setEnableScrolling(boolean scrolling) {
-            GeneralAttribute.scrolling = scrolling;
-            return this;
-        }
 
-        public HijriCalendarDialog.Builder setMaxGregorianYear(int maxYear) {
+        public HijriCalendarDialog.Builder MaxGregorianYear(int maxYear) {
             GeneralAttribute.gregorian_max = maxYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinGregorianYear(int minYear) {
+        public HijriCalendarDialog.Builder MinGregorianYear(int minYear) {
             GeneralAttribute.gregorian_min = minYear;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMinMaxGregorianYear(int min, int max) {
+        public HijriCalendarDialog.Builder MinMaxGregorianYear(int min, int max) {
             GeneralAttribute.gregorian_max = max;
             GeneralAttribute.gregorian_min = min;
             return this;
@@ -115,7 +111,7 @@ public class HijriCalendarDialog {
             return this;
         }
 
-        public HijriCalendarDialog.Builder setOnDateSetListener(HijriCalendarView.OnDateSetListener onDateSetListener) {
+        public HijriCalendarDialog.Builder listener(OnDateSetListener onDateSetListener) {
             GeneralAttribute.onDateSetListener = onDateSetListener;
             return this;
         }
@@ -125,12 +121,12 @@ public class HijriCalendarDialog {
             return this;
         }
 
-        public HijriCalendarDialog.Builder setMode(Mode mode) {
+        public HijriCalendarDialog.Builder mode(Mode mode) {
             GeneralAttribute.mode = mode;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setDefaultHijriDate(int day, int month, int year) {
+        public HijriCalendarDialog.Builder defaultHijriDate(int day, int month, int year) {
             if (month > 11 || month < 0)
                 throw new RuntimeException("Month must be between 0-11");
             GeneralAttribute.setDefaultDate = true;
@@ -141,5 +137,9 @@ public class HijriCalendarDialog {
         }
 
 
+    }
+    public interface OnDateSetListener {
+        @Deprecated
+        void onDateSet(int year, int month, int day);
     }
 }
