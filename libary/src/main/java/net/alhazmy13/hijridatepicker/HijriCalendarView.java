@@ -1,11 +1,8 @@
 package net.alhazmy13.hijridatepicker;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
@@ -20,6 +17,7 @@ import net.alhazmy13.hijridatepicker.adapter.HijriCalendarAdapter;
 import net.alhazmy13.hijridatepicker.adapter.HijriCalenderItem;
 import net.alhazmy13.hijridatepicker.adapter.OnDaySelected;
 import net.alhazmy13.hijridatepicker.calendar.CalendarInstance;
+import net.alhazmy13.hijridatepicker.month.MonthDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,29 +30,22 @@ import java.util.Locale;
 class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, View.OnClickListener, YearDialog.OnYearChanged, OnDaySelected {
     private Context mContext;
     private String[] days;
-    private TextView dayTextView, monthTextView, yearTextView, lastSelectedDay, dateTextView;
+    private TextView dayTextView, monthTextView, yearTextView, dateTextView;
     private CalendarInstance calendarInstance;
     private RecyclerView recyclerView;
-    private boolean isLandArabic = false;
     private List<HijriCalenderItem> hijriItems;
     private HijriCalendarAdapter mAdapter;
 
-    /**
-     * @param mContext
-     */
+
     HijriCalendarView(final Context mContext) {
         super(mContext);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.mContext = mContext;
-        //Detect Layout
         if (GeneralAttribute.uiView == HijriCalendarDialog.UiView.Land)
             setContentView(R.layout.dialog_hijri_calendar_land);
         else
             setContentView(R.layout.dialog_hijri_calendar);
 
-        if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue()) {
-            isLandArabic = true;
-        }
         init();
 
     }
@@ -71,7 +62,6 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
 
     private void init() {
         initViews();
-        initLand();
         initRecycleView();
         initDays();
         initListener();
@@ -104,24 +94,8 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
             calendarInstance.minusMonth();
             slideRightToLeft();
             initDays();
-        } else {
-            TextView temp = (TextView) view;
-            if (!temp.getText().toString().trim().isEmpty()) {
-                lastSelectedDay.setTextColor(ContextCompat.getColor(mContext, android.R.color.darker_gray));
-                lastSelectedDay.setBackgroundColor(ContextCompat.getColor(mContext, android.R.color.transparent));
-                temp.setBackground(ContextCompat.getDrawable(mContext, R.drawable.hijri_date_picker_card_selected));
-                temp.setTextColor(ContextCompat.getColor(mContext, android.R.color.white));
-                lastSelectedDay = temp;
-                dayTextView.setText(temp.getText().toString());
-                calendarInstance.setDay(Integer.parseInt(temp.getText().toString()));
-                //TODO in case of landscape Arabic
-                if (isLandArabic) {
-                    GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
-                    dismiss();
-                }
-
-            }
         }
+
     }
 
 
@@ -145,13 +119,6 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
             calendarInstance.setMonth(GeneralAttribute.defaultMonth);
             calendarInstance.setYear(GeneralAttribute.defaultYear);
         }
-    }
-
-    //region init for land
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void initLand() {
-
-
     }
 
 
@@ -186,10 +153,8 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
         monthTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                MonthDialog monthDialog = new MonthDialog(mContext);
-                monthDialog.setOnDateChanged(HijriCalendarView.this);
-                monthDialog.setCurrentMonth(calendarInstance.getCurrentMonth());
-                monthDialog.setMonthNames(calendarInstance.getMonths());
+                MonthDialog monthDialog = new MonthDialog(mContext,HijriCalendarView.this);
+                monthDialog.setMonthNames(calendarInstance.getMonths(),calendarInstance.getCurrentMonth());
                 monthDialog.show();
 
                 return false;
@@ -237,6 +202,8 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
 
     @Override
     public void daySelected(int position) {
+        calendarInstance.setDay(Integer.parseInt(hijriItems.get(position).getText()));
         GeneralAttribute.onDateSetListener.onDateSet(calendarInstance.getYear(), calendarInstance.getMonth(), calendarInstance.getDayOfMonth());
+        dismiss();
     }
 }

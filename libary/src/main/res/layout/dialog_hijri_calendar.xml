@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="?colorPrimary"
+        android:background="?attr/colorPrimary"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="vertical"
         android:padding="16dp">
@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="1"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
@@ -29,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="محرم"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -40,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="1437"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
@@ -69,8 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="شوال 1437" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/rightArrowImageView"

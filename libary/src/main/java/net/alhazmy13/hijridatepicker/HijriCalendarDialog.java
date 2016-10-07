@@ -139,7 +139,6 @@ public class HijriCalendarDialog {
 
     }
     public interface OnDateSetListener {
-        @Deprecated
         void onDateSet(int year, int month, int day);
     }
 }

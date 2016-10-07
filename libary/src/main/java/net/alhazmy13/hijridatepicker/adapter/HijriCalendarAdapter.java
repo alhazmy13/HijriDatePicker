@@ -38,7 +38,7 @@ public class HijriCalendarAdapter extends RecyclerView.Adapter<HijriCalendarAdap
     public void onBindViewHolder(HijriCalendarViewHolder holder, final int position) {
         holder.textView.setText(String.valueOf(items.get(position).getText()));
         if (items.get(position).isCurrentDay()) {
-            holder.textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.hijri_date_picker_card_selected));
+            holder.textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.hijri_date_picker_selected));
             holder.textView.setTextColor(ContextCompat.getColor(mContext,android.R.color.white));
         }
         if(items.get(position).getItemType() == HijriCalenderItem.Type.DAY){
