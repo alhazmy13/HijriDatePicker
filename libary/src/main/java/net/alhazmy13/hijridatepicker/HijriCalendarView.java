@@ -41,7 +41,7 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
         super(mContext);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.mContext = mContext;
-        if (GeneralAttribute.uiView == HijriCalendarDialog.UiView.Land)
+        if (GeneralAttribute.uiView == HijriCalendarDialog.UIView.Landscape)
             setContentView(R.layout.dialog_hijri_calendar_land);
         else
             setContentView(R.layout.dialog_hijri_calendar);
@@ -87,12 +87,12 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.rightArrowImageView) {
-            calendarInstance.plusMonth();
-            slideLeftToRight();
-            initDays();
-        } else if (id == R.id.leftArrowImageView) {
             calendarInstance.minusMonth();
             slideRightToLeft();
+            initDays();
+        } else if (id == R.id.leftArrowImageView) {
+            calendarInstance.plusMonth();
+            slideLeftToRight();
             initDays();
         }
 
@@ -109,11 +109,11 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
         findViewById(R.id.leftArrowImageView).setOnClickListener(this);
         findViewById(R.id.rightArrowImageView).setOnClickListener(this);
 
-        if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue())
+        if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic)
             callSwitchLang("ar");
-        else if (GeneralAttribute.language == HijriCalendarDialog.Language.English.getLanguageValue())
+        else if (GeneralAttribute.language == HijriCalendarDialog.Language.English)
             callSwitchLang("en");
-        calendarInstance = new CalendarInstance(mContext, GeneralAttribute.mode.getModeValue());
+        calendarInstance = new CalendarInstance(mContext, GeneralAttribute.mode);
         if (GeneralAttribute.setDefaultDate) {
             calendarInstance.setDay(GeneralAttribute.defaultDay);
             calendarInstance.setMonth(GeneralAttribute.defaultMonth);
@@ -144,6 +144,11 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
             hijriItems.add(new HijriCalenderItem(String.valueOf(i), i == calendarInstance.getDayOfMonth(), HijriCalenderItem.Type.DAY));
         }
 
+        if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic) {
+            List<HijriCalenderItem> temp = Utility.reversItems(hijriItems.toArray(new HijriCalenderItem[hijriItems.size()]), 7);
+            hijriItems.clear();
+            hijriItems.addAll(temp);
+        }
 
         mAdapter.notifyDataSetChanged();
 
@@ -153,8 +158,8 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
         monthTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                MonthDialog monthDialog = new MonthDialog(mContext,HijriCalendarView.this);
-                monthDialog.setMonthNames(calendarInstance.getMonths(),calendarInstance.getCurrentMonth());
+                MonthDialog monthDialog = new MonthDialog(mContext, HijriCalendarView.this);
+                monthDialog.setMonthNames(calendarInstance.getMonths(), calendarInstance.getCurrentMonth());
                 monthDialog.show();
 
                 return false;
@@ -173,8 +178,8 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
     }
 
     private void updateCalenderInformation() {
-        String year = GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue() ? Utility.toArabicNumbers(calendarInstance.getYear() + "") : calendarInstance.getYear() + "";
-        dayTextView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic.getLanguageValue() ? Utility.toArabicNumbers(calendarInstance.getDayOfMonth() + "") : calendarInstance.getDayOfMonth() + "");
+        String year = GeneralAttribute.language == HijriCalendarDialog.Language.Arabic ? Utility.toArabicNumbers(calendarInstance.getYear() + "") : calendarInstance.getYear() + "";
+        dayTextView.setText(GeneralAttribute.language == HijriCalendarDialog.Language.Arabic ? Utility.toArabicNumbers(calendarInstance.getDayOfMonth() + "") : calendarInstance.getDayOfMonth() + "");
         monthTextView.setText(calendarInstance.getMonthName());
         yearTextView.setText(year);
         dateTextView.setText(String.valueOf(calendarInstance.getMonthName() + " " + year));

@@ -1,12 +1,11 @@
 package net.alhazmy13.hijridatepicker;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.AppCompatButton;
-import android.widget.Button;
+import net.alhazmy13.hijridatepicker.adapter.HijriCalenderItem;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Alhazmy13 on 10/19/15.
@@ -38,6 +37,41 @@ class Utility {
                 .replace("8", "٨")
                 .replace("9", "٩")
                 .replace("0", "٠");
+    }
+
+    public static List<HijriCalenderItem> reversItems(HijriCalenderItem[] array, int max) {
+        List<HijriCalenderItem[]> items = splitArray(array, max);
+        List<HijriCalenderItem> newItems = new ArrayList<>();
+        for (HijriCalenderItem[] item : items) {
+            for (int i = 0; i < item.length / 2; i++) {
+                HijriCalenderItem tempString = item[i];
+                item[i] = item[item.length - i - 1];
+                item[item.length - i - 1] = tempString;
+            }
+            Collections.addAll(newItems, item);
+        }
+
+
+        return newItems;
+
+    }
+
+    private static List<HijriCalenderItem[]> splitArray(HijriCalenderItem[] array, int max) {
+        int x = array.length / max;
+        int r = (array.length % max); // remainder
+        int lower = 0;
+        int upper = 0;
+        List<HijriCalenderItem[]> list = new ArrayList<>();
+        int i = 0;
+        for (i = 0; i < x; i++) {
+            upper += max;
+            list.add(Arrays.copyOfRange(array, lower, upper));
+            lower = upper;
+        }
+        if (r > 0) {
+            list.add(Arrays.copyOfRange(array, lower, (lower + r)));
+        }
+        return list;
     }
 
 

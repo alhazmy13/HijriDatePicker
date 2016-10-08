@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2016.
  * Created by Alhazmy13 6/1/2016.
@@ -22,32 +20,29 @@ import android.widget.TextView;
  * Created by Alhazmy13 on 1/6/16.
  * HijriDatePicker
  */
-class YearDialog extends Dialog implements DialogInterface.OnDismissListener,View.OnClickListener {
+class YearDialog extends Dialog implements DialogInterface.OnDismissListener, View.OnClickListener {
     private NumberPicker numberPicker;
     private OnYearChanged onYearChanged;
 
 
-    interface OnYearChanged {
-        void onYearChanged(int year);
-
-    }
-    void setOnYearChanged(OnYearChanged listen) {
-        onYearChanged = listen;
-    }
     YearDialog(Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.dialog_year);
         this.setOnDismissListener(this);
         initViews();
-        if(GeneralAttribute.mode.getModeValue() == HijriCalendarDialog.Mode.Hijri.getModeValue()) {
+        if (GeneralAttribute.mode.getModeValue() == HijriCalendarDialog.Mode.Hijri.getModeValue()) {
             numberPicker.setMaxValue(GeneralAttribute.hijri_max);
             numberPicker.setMinValue(GeneralAttribute.hijri_min);
-        }else{
+        } else {
             numberPicker.setMaxValue(GeneralAttribute.gregorian_max);
             numberPicker.setMinValue(GeneralAttribute.gregorian_min);
         }
 
+    }
+
+    void setOnYearChanged(OnYearChanged listen) {
+        onYearChanged = listen;
     }
 
     private void initViews() {
@@ -56,7 +51,7 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener,Vie
         okButton.setOnClickListener(this);
     }
 
-    protected void setTitle(String title){
+    protected void setTitle(String title) {
         ((TextView) findViewById(R.id.title)).setText(title);
     }
 
@@ -73,6 +68,11 @@ class YearDialog extends Dialog implements DialogInterface.OnDismissListener,Vie
     public void onClick(View view) {
         onYearChanged.onYearChanged(numberPicker.getValue());
         dismiss();
+    }
+
+    interface OnYearChanged {
+        void onYearChanged(int year);
+
     }
 
 }

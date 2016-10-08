@@ -18,7 +18,7 @@ import java.lang.ref.WeakReference;
 class GeneralAttribute {
     static WeakReference<Context> context;
     static String title;
-    static int language;
+    static HijriCalendarDialog.Language language;
     static HijriCalendarDialog.OnDateSetListener onDateSetListener;
     static HijriCalendarDialog.Mode mode = HijriCalendarDialog.Mode.Hijri;
     static int hijri_min;
@@ -30,5 +30,5 @@ class GeneralAttribute {
     static int defaultMonth;
     static int defaultYear;
     static boolean scrolling;
-    static HijriCalendarDialog.UiView uiView;
+    static HijriCalendarDialog.UIView uiView;
 }

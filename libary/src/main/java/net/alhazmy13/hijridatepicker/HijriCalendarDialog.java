@@ -21,38 +21,21 @@ public class HijriCalendarDialog {
     }
 
     public enum Mode {
-        Hijri(1),
-        Gregorian(2);
-        private int mode;
-
-        Mode(int mode) {
-            this.mode = mode;
-        }
-
-        public int getModeValue() {
-            return mode;
-        }
+        Hijri, Gregorian
 
     }
 
     public enum Language {
-        Arabic(1),
-        English(2),
-        Default(3);
-        private int language;
-
-        Language(int language) {
-            this.language = language;
-        }
-
-        public int getLanguageValue() {
-            return language;
-        }
+        Arabic, English, Default
 
     }
 
-    public enum UiView {
-        Default, Land
+    public enum UIView {
+        Portrait, Landscape,Auto
+    }
+
+    public interface OnDateSetListener {
+        void onDateSet(int year, int month, int day);
     }
 
     public static class Builder {
@@ -63,9 +46,9 @@ public class HijriCalendarDialog {
             GeneralAttribute.hijri_min = 1437;
             GeneralAttribute.gregorian_max = 2050;
             GeneralAttribute.gregorian_min = 2013;
-            GeneralAttribute.language = Language.Default.getLanguageValue();
+            GeneralAttribute.language = Language.Default;
             GeneralAttribute.scrolling = true;
-            GeneralAttribute.uiView = UiView.Default;
+            GeneralAttribute.uiView = UIView.Auto;
         }
 
         public HijriCalendarDialog.Builder MaxHijriYear(int maxYear) {
@@ -102,11 +85,18 @@ public class HijriCalendarDialog {
         }
 
         public HijriCalendarDialog.Builder setUILanguage(Language language) {
-            GeneralAttribute.language = language.getLanguageValue();
+            GeneralAttribute.language = language;
             return this;
         }
 
-        public HijriCalendarDialog.Builder setUIView(UiView uiView) {
+        /**
+         * Sets UIView.
+         * @param uiView Portrait :  view for mobile devices<br>
+         * Landscape : view for tablet devices<br>
+         * Auto : auto detect user device
+         * @return the ui view
+         */
+        public HijriCalendarDialog.Builder setUIView(UIView uiView) {
             GeneralAttribute.uiView = uiView;
             return this;
         }
@@ -137,8 +127,5 @@ public class HijriCalendarDialog {
         }
 
 
-    }
-    public interface OnDateSetListener {
-        void onDateSet(int year, int month, int day);
     }
 }

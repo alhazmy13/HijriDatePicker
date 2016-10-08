@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CalendarInstance calendarInstance = new CalendarInstance(this, HijriCalendarDialog.Mode.Hijri.getModeValue());
+        CalendarInstance calendarInstance = new CalendarInstance(this, HijriCalendarDialog.Mode.Hijri);
         day = calendarInstance.getDayOfMonth();
         month = calendarInstance.getCurrentMonth();
         year = calendarInstance.getCurrentYear();
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements HijriCalendarDial
                         .listener(MainActivity.this)
                         .mode(HijriCalendarDialog.Mode.Hijri)
                         .setUILanguage(HijriCalendarDialog.Language.Arabic)
-                        .setUIView(HijriCalendarDialog.UiView.Default)
+                        .setUIView(HijriCalendarDialog.UIView.Portrait)
                         .defaultHijriDate(day, month, year)
                         .show();
 
