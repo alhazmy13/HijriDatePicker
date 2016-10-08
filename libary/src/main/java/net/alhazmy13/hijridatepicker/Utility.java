@@ -13,7 +13,7 @@ import java.util.List;
  */
 class Utility {
 
-    public static String toEnglishNumbers(String day) {
+    static String toEnglishNumbers(String day) {
         return day.replace("١", "1")
                 .replace("٢", "2")
                 .replace("٣", "3")
@@ -39,7 +39,7 @@ class Utility {
                 .replace("0", "٠");
     }
 
-    public static List<HijriCalenderItem> reversItems(HijriCalenderItem[] array, int max) {
+    static List<HijriCalenderItem> reverseItems(HijriCalenderItem[] array, int max) {
         List<HijriCalenderItem[]> items = splitArray(array, max);
         List<HijriCalenderItem> newItems = new ArrayList<>();
         for (HijriCalenderItem[] item : items) {

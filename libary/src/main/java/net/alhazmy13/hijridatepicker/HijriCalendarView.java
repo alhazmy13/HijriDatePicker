@@ -145,7 +145,7 @@ class HijriCalendarView extends Dialog implements MonthDialog.OnMonthChanged, Vi
         }
 
         if (GeneralAttribute.language == HijriCalendarDialog.Language.Arabic) {
-            List<HijriCalenderItem> temp = Utility.reversItems(hijriItems.toArray(new HijriCalenderItem[hijriItems.size()]), 7);
+            List<HijriCalenderItem> temp = Utility.reverseItems(hijriItems.toArray(new HijriCalenderItem[hijriItems.size()]), 7);
             hijriItems.clear();
             hijriItems.addAll(temp);
         }
