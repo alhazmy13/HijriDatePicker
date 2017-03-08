@@ -66,11 +66,11 @@ public class MainActivity extends AppCompatActivity
                 case 0:
                     return R.string.tab_title_time;
                 case 1:
-                    return R.string.tab_title_date;
+                    return R.string.tab_title_gregorian_date;
                 case 2:
                     return R.string.tab_title_hijri_date;
                 default:
-                    return R.string.tab_title_date;
+                    return R.string.tab_title_gregorian_date;
             }
         }
     }

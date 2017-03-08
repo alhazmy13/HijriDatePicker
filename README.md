@@ -11,7 +11,7 @@ This library offers a hijri (Islamic Calendar) Date Picker  designed on [Google'
 
 Demo | Hijri
 ---- | ----
-<img src="https://cloud.githubusercontent.com/assets/4659608/23705307/3e099f1c-041a-11e7-8ca2-c4c7a52aed33.gif" width="500"> | <img src="https://cloud.githubusercontent.com/assets/4659608/23705301/38fc59b0-041a-11e7-9090-6769154f55a4.png" width="500">
+<img src="https://cloud.githubusercontent.com/assets/4659608/23710316/58e61be0-042d-11e7-92d5-c4bf08a6509b.gif" width="500"> | <img src="https://cloud.githubusercontent.com/assets/4659608/23705301/38fc59b0-041a-11e7-9090-6769154f55a4.png" width="500">
 Time | Gregorian
 <img src="https://cloud.githubusercontent.com/assets/4659608/23705300/38fc1248-041a-11e7-80b4-13086269f642.png" width="500"> | <img src="https://cloud.githubusercontent.com/assets/4659608/23705299/38fbf510-041a-11e7-9df4-857dab2638a6.png" width="500">
 
