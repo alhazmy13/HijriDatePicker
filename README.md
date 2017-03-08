@@ -9,9 +9,11 @@
 
 This library offers a hijri (Islamic Calendar) Date Picker  designed on [Google's Material Design Principals For Pickers](http://www.google.com/design/spec/components/pickers.html) for Android 4.1 (API 16) +.
 
-عربي | English
+Demo | Hijri
 ---- | ----
-![Arabic](https://cloud.githubusercontent.com/assets/4659608/10579117/0466d434-767f-11e5-8172-534f1a47c608.png) | ![English](https://cloud.githubusercontent.com/assets/4659608/10579118/04684ee0-767f-11e5-8432-a9b5d67713f9.png) 
+<img src="https://cloud.githubusercontent.com/assets/4659608/23705307/3e099f1c-041a-11e7-8ca2-c4c7a52aed33.gif" width="500"> | <img src="https://cloud.githubusercontent.com/assets/4659608/23705301/38fc59b0-041a-11e7-9090-6769154f55a4.png" width="500">
+Time | Gregorian
+<img src="https://cloud.githubusercontent.com/assets/4659608/23705300/38fc1248-041a-11e7-80b4-13086269f642.png" width="500"> | <img src="https://cloud.githubusercontent.com/assets/4659608/23705299/38fbf510-041a-11e7-9df4-857dab2638a6.png" width="500">
 
 You can report any issue on issues page. **Note: If you speak Arabic, you can submit issues with Arabic language and I will check them. :)**
 
