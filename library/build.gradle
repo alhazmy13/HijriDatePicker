@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+//./gradlew clean build bintrayUpload
+
+def getBintrayUserProperty() {
+    return hasProperty('BINTRAY_USER') ? BINTRAY_USER : ""
+}
+
+def getBintrayApiKeyProperty() {
+    return hasProperty('BINTRAY_APIKEY') ? BINTRAY_APIKEY : ""
+}
+publish {
+    userOrg = 'alhazmy13'
+    groupId = 'net.alhazmy13.hijridatepicker'
+    artifactId = 'library'
+    uploadName = 'HijriDatePicker'
+    publishVersion = '2.0.0-beta'
+    desc = 'Hijri Date Picker'
+    dryRun = false
+    website = 'https://github.com/alhzmy13/HijriDatePicker'
+}
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:support-v13:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile group: 'com.github.msarhan', name: 'ummalqura-calendar', version:'1.1.7'
+
+}
+

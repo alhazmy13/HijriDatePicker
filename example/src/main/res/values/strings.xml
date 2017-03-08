@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">HijriCalender Example</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="fake_date">xx/xx/xxxx</string>
-</resources>
