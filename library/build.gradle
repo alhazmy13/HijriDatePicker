@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+//./gradlew bintrayUpload
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'HijriDatePicker'
+
+    publishedGroupId = 'net.alhazmy13.hijridatepicker'
+    libraryName = 'library'
+
+    artifact = 'library'
+
+    libraryDescription = 'Hijri Date Picker'
+
+    siteUrl = 'https://github.com/alhzmy13/HijriDatePicker'
+    gitUrl = 'https://github.com/alhzmy13/HijriDatePicker.git'
+
+    libraryVersion = '2.0.0-beta'
+
+    developerId = 'alhazmy13'
+    developerName = 'Abdullah Alhazmy'
+    developerEmail = 'me@alhazmy13.net'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:support-v13:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile group: 'com.github.msarhan', name: 'ummalqura-calendar', version:'1.1.7'
+
+}
+
+apply from: './bintrayv1.gradle'
+apply from: './installv1.gradle'
