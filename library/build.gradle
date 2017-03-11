@@ -13,7 +13,7 @@ publish {
     userOrg = 'alhazmy13'
     groupId = 'net.alhazmy13.hijridatepicker'
     artifactId = 'library'
-    uploadName = 'HijriDatePicker'
+    uploadName = 'HijriDatePicker-v2'
     publishVersion = '2.0.0-beta'
     desc = 'Hijri Date Picker'
     dryRun = false
