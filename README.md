@@ -74,8 +74,8 @@ You will need to create a new instance of `GregorianDatePickerDialog `. Once the
 
 ```java
 Calendar now = Calendar.getInstance();
-GregorianDatePickerDialog dpd = GregorianDatePickerDialog(
-		  CONTEXT,
+GregorianDatePickerDialog dpd = GregorianDatePickerDialog.newInstance(
+		  this,
 		  now.get(Calendar.YEAR),
 		  now.get(Calendar.MONTH),
 		  now.get(Calendar.DAY_OF_MONTH));
@@ -87,8 +87,8 @@ Same as `GregorianDatePickerDialog` but you need to use `UmmalquraCalendar` inst
 
 ```java
 UmmalquraCalendar now = new UmmalquraCalendar();
-HijriDatePickerDialog dpd = HijriDatePickerDialog(
-		  CONTEXT,
+HijriDatePickerDialog dpd = HijriDatePickerDialog.newInstance(
+		  this,
 		  now.get(UmmalquraCalendar.YEAR),
 		  now.get(UmmalquraCalendar.MONTH),
 		  now.get(UmmalquraCalendar.DAY_OF_MONTH));
@@ -101,7 +101,7 @@ dpd.show(getFragmentManager(), "HijriDatePickerDialog");
 ```java
 Calendar now = Calendar.getInstance();
 TimePickerDialog tpd = TimePickerDialog.newInstance(
-                        TimePickerFragment.this,
+                        this,
                         now.get(Calendar.HOUR_OF_DAY),
                         now.get(Calendar.MINUTE),
                         mode24Hours.isChecked()
