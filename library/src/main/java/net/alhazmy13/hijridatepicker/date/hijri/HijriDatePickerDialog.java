@@ -950,7 +950,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
         tryVibrate();
         if (v.getId() == R.id.mdtp_hijri_date_picker_year) {
             setCurrentView(YEAR_VIEW);
-        } else if (v.getId() == R.id.mdtp_hijri_date_picker_month) {
+        } else if (v.getId() == mdtp_hijri_date_picker_month_and_day) {
             setCurrentView(MONTH_AND_DAY_VIEW);
         }
     }
