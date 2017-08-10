@@ -948,9 +948,9 @@ public class HijriDatePickerDialog extends DialogFragment implements
     @Override
     public void onClick(View v) {
         tryVibrate();
-        if (v.getId() == R.id.mdtp_date_picker_year) {
+        if (v.getId() == R.id.mdtp_hijri_date_picker_year) {
             setCurrentView(YEAR_VIEW);
-        } else if (v.getId() == R.id.mdtp_date_picker_month_and_day) {
+        } else if (v.getId() == R.id.mdtp_hijri_date_picker_month) {
             setCurrentView(MONTH_AND_DAY_VIEW);
         }
     }
