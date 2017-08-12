@@ -382,8 +382,9 @@ public abstract class MonthView extends View {
         } else {
             mWeekStart = mCalendar.getFirstDayOfWeek();
         }
+        mNumCells = UmmalquraCalendar.lengthOfMonth(mCalendar.get(UmmalquraCalendar.YEAR),mCalendar.get(UmmalquraCalendar.MONTH));
 
-        mNumCells = mCalendar.getActualMaximum(UmmalquraCalendar.DAY_OF_MONTH);
+//        mNumCells = mCalendar.getActualMaximum(UmmalquraCalendar.DAY_OF_MONTH);
         for (int i = 0; i < mNumCells; i++) {
             final int day = i + 1;
             if (sameDay(day, today)) {

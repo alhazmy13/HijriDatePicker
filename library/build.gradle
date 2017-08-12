@@ -2,19 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 //./gradlew clean build bintrayUpload
 
-def getBintrayUserProperty() {
-    return hasProperty('BINTRAY_USER') ? BINTRAY_USER : ""
-}
 
-def getBintrayApiKeyProperty() {
-    return hasProperty('BINTRAY_APIKEY') ? BINTRAY_APIKEY : ""
-}
 publish {
     userOrg = 'alhazmy13'
     groupId = 'net.alhazmy13.hijridatepicker'
     artifactId = 'library'
     uploadName = 'HijriDatePicker-v2'
-    publishVersion = '2.0.0-beta'
+    publishVersion = '2.0.1'
     desc = 'Hijri Date Picker'
     dryRun = false
     website = 'https://github.com/alhzmy13/HijriDatePicker'
