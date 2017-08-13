@@ -8,7 +8,7 @@ publish {
     groupId = 'net.alhazmy13.hijridatepicker'
     artifactId = 'library'
     uploadName = 'HijriDatePicker-v2'
-    publishVersion = '2.0.1'
+    publishVersion = '2.0.2'
     desc = 'Hijri Date Picker'
     dryRun = false
     website = 'https://github.com/alhzmy13/HijriDatePicker'

@@ -547,7 +547,11 @@ public class HijriDatePickerDialog extends DialogFragment implements
         }
 
         if (mVersion == Version.VERSION_2) {
-            mSelectedDayTextView.setText(VERSION_2_FORMAT.format(mCalendar.getTime()));
+            String day =
+                    mCalendar.getDisplayName(UmmalquraCalendar.DAY_OF_WEEK,UmmalquraCalendar.SHORT,getLocal())
+                    +", "+ mCalendar.getDisplayName(UmmalquraCalendar.MONTH,UmmalquraCalendar.SHORT,getLocal())
+                    + " "+mCalendar.get(Calendar.DAY_OF_MONTH);
+            mSelectedDayTextView.setText(day);
             if (mTitle != null)
                 mDatePickerHeaderView.setText(mTitle.toUpperCase(Locale.getDefault()));
             else

@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mdtp_hijri_day_picker_selected_date_layout"
     android:layout_width="@dimen/mdtp_date_picker_component_width"
-    android:layout_height="@dimen/mdtp_selected_date_height"
+    android:layout_height="wrap_content"
     android:layout_weight="1"
     android:background="@color/mdtp_accent_color"
     android:gravity="center"
