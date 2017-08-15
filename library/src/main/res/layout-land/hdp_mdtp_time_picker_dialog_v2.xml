@@ -16,36 +16,39 @@
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mdtp_time_picker_dialog"
-    android:layout_width="@dimen/mdtp_picker_dimen"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
     android:background="@color/mdtp_background_color"
     android:focusable="true" >
-    <LinearLayout
+    <include layout="@layout/hdp_mdtp_time_title_view_v2" />
+    <FrameLayout
         android:id="@+id/mdtp_time_display_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="@dimen/mdtp_date_picker_header_width"
+        android:layout_height="match_parent"
         android:background="@color/mdtp_accent_color" >
-
-        <include layout="@layout/mdtp_time_title_view_v2" />
-
         <include
-            layout="@layout/mdtp_time_header_label"
+            layout="@layout/hdp_mdtp_time_header_label"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/mdtp_header_height"
+            android:layout_height="match_parent"
             android:layout_gravity="center" />
-
+    </FrameLayout>
+    <LinearLayout
+        android:layout_height="@dimen/mdtp_time_picker_height"
+        android:layout_width="wrap_content"
+        android:orientation="vertical" >
         <net.alhazmy13.hijridatepicker.time.RadialPickerLayout
             android:id="@+id/mdtp_time_picker"
-            android:layout_height="@dimen/mdtp_picker_dimen"
             android:layout_width="@dimen/mdtp_picker_dimen"
+            android:layout_height="@dimen/mdtp_picker_dimen"
             android:layout_gravity="center"
-            android:background="@color/mdtp_circle_background"
             android:focusable="true"
-            android:focusableInTouchMode="true" />
+            android:focusableInTouchMode="true"
+            android:background="@color/mdtp_circle_background" />
+        <include
+            layout="@layout/hdp_mdtp_done_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-16dp"/>
     </LinearLayout>
-
-    <include layout="@layout/mdtp_done_button" />
 </LinearLayout>

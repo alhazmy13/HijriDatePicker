@@ -26,11 +26,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <include layout="@layout/mdtp_date_picker_selected_date" />
+        <include layout="@layout/hdp_mdtp_hijri_date_picker_selected_date" />
 
-        <include layout="@layout/mdtp_date_picker_view_animator" />
+        <include layout="@layout/hdp_mdtp_hijri_date_picker_view_animator" />
     </LinearLayout>
 
-    <include layout="@layout/mdtp_done_button" />
+    <include layout="@layout/hdp_mdtp_done_button" />
 
 </LinearLayout>
