@@ -23,16 +23,16 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/mdtp_selected_calendar_layout_height"
         android:orientation="vertical" >
 
-        <include layout="@layout/mdtp_date_picker_header_view" />
+        <include layout="@layout/hdp_mdtp_hijri_date_picker_header_view" />
 
-        <include layout="@layout/mdtp_date_picker_selected_date" />
-
-        <include layout="@layout/mdtp_date_picker_view_animator" />
+        <include layout="@layout/hdp_mdtp_hijri_date_picker_selected_date" />
     </LinearLayout>
 
-    <include layout="@layout/mdtp_done_button" />
+    <include layout="@layout/hdp_mdtp_hijri_date_picker_view_animator" />
+
+    <include layout="@layout/hdp_mdtp_done_button" />
 
 </LinearLayout>

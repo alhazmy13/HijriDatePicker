@@ -317,7 +317,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
             mTimezone = (TimeZone) savedInstanceState.getSerializable(KEY_TIMEZONE);
         }
 
-        int viewRes = mVersion == Version.VERSION_1 ? R.layout.mdtp_hijri_date_picker_dialog : R.layout.mdtp_hijri_date_picker_dialog_v2;
+        int viewRes = mVersion == Version.VERSION_1 ? R.layout.hdp_mdtp_hijri_date_picker_dialog : R.layout.hdp_mdtp_hijri_date_picker_dialog_v2;
         View view = inflater.inflate(viewRes, container, false);
         // All options have been set at this point: round the initial selection if necessary
         setToNearestDate(mCalendar);

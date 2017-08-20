@@ -530,7 +530,7 @@ public class TimePickerDialog extends DialogFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        int viewRes = mVersion == Version.VERSION_1 ? R.layout.mdtp_time_picker_dialog : R.layout.mdtp_time_picker_dialog_v2;
+        int viewRes = mVersion == Version.VERSION_1 ? R.layout.hdp_mdtp_time_picker_dialog : R.layout.hdp_mdtp_time_picker_dialog_v2;
         View view = inflater.inflate(viewRes, container,false);
         KeyboardListener keyboardListener = new KeyboardListener();
         view.findViewById(R.id.mdtp_time_picker_dialog).setOnKeyListener(keyboardListener);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2013 The Android Open Source Project
+  ~ Copyright (C) 2016 Wouter Dullaert
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -29,17 +29,17 @@
         android:orientation="vertical"
         android:background="@color/mdtp_accent_color" >
 
-        <include layout="@layout/mdtp_time_title_view" />
+        <include layout="@layout/hdp_mdtp_time_title_view_v2" />
 
         <include
-            layout="@layout/mdtp_time_header_label"
+            layout="@layout/hdp_mdtp_time_header_label"
             android:layout_width="match_parent"
             android:layout_height="@dimen/mdtp_header_height"
             android:layout_gravity="center" />
 
         <net.alhazmy13.hijridatepicker.time.RadialPickerLayout
             android:id="@+id/mdtp_time_picker"
-            android:layout_height="@dimen/mdtp_time_picker_height"
+            android:layout_height="@dimen/mdtp_picker_dimen"
             android:layout_width="@dimen/mdtp_picker_dimen"
             android:layout_gravity="center"
             android:background="@color/mdtp_circle_background"
@@ -47,5 +47,5 @@
             android:focusableInTouchMode="true" />
     </LinearLayout>
 
-    <include layout="@layout/mdtp_done_button" />
+    <include layout="@layout/hdp_mdtp_done_button" />
 </LinearLayout>
