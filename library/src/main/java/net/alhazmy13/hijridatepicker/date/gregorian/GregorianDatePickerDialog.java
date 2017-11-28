@@ -983,11 +983,19 @@ public class GregorianDatePickerDialog extends DialogFragment implements
         return output;
     }
 
+    public void setMinYear(int minYear) {
+        mMinYear = minYear;
+    }
+
     @Override
     public int getMinYear() {
         if (!selectableDays.isEmpty()) return selectableDays.first().get(Calendar.YEAR);
         // Ensure no years can be selected outside of the given minimum date
         return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ? mMinDate.get(Calendar.YEAR) : mMinYear;
+    }
+
+    public void setMaxYear(int maxYear) {
+        mMaxYear = maxYear;
     }
 
     @Override
