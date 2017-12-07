@@ -1013,11 +1013,19 @@ public class HijriDatePickerDialog extends DialogFragment implements
         return output;
     }
 
+    public void setMinYear(int minYear) {
+        mMinYear = minYear;
+    }
+
     @Override
     public int getMinYear() {
         if (!selectableDays.isEmpty()) return selectableDays.first().get(UmmalquraCalendar.YEAR);
         // Ensure no years can be selected outside of the given minimum date
         return mMinDate != null && mMinDate.get(UmmalquraCalendar.YEAR) > mMinYear ? mMinDate.get(UmmalquraCalendar.YEAR) : mMinYear;
+    }
+
+    public void setMaxYear(int maxYear) {
+        mMaxYear = maxYear;
     }
 
     @Override
