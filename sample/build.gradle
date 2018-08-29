@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:support-v13:27.1.1'
+    implementation group: 'com.github.msarhan', name: 'ummalqura-calendar', version:'1.1.9'
 }

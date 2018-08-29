@@ -43,7 +43,7 @@ import java.util.Locale;
  * This displays a list of months in a calendar format with selectable days.
  */
 public abstract class DayPickerView extends ListView implements OnScrollListener,
-    OnDateChangedListener {
+        OnDateChangedListener {
 
     private static final String TAG = "MonthFragment";
 
@@ -57,7 +57,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
     // The number of days to display in each week
     public static final int DAYS_PER_WEEK = 7;
     public static int LIST_TOP_OFFSET = -1; // so that the top line will be
-                                            // under the separator
+    // under the separator
     // You can override these numbers to get a different appearance
     protected int mNumWeeks = 6;
     protected boolean mShowWeekNumber = false;
@@ -140,7 +140,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
     }
 
     public abstract MonthAdapter createMonthAdapter(Context context,
-            DatePickerController controller);
+                                                    DatePickerController controller);
 
     /*
      * Sets all the required fields for the list view. Override this method to
@@ -169,12 +169,12 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
      * the list will not be scrolled unless forceScroll is true. This time may
      * optionally be highlighted as selected as well.
      *
-     * @param day The day to move to
-     * @param animate Whether to scroll to the given time or just redraw at the
-     *            new location
+     * @param day         The day to move to
+     * @param animate     Whether to scroll to the given time or just redraw at the
+     *                    new location
      * @param setSelected Whether to set the given time as selected
      * @param forceScroll Whether to recenter even if the time is already
-     *            visible
+     *                    visible
      * @return Whether or not the view animated to the new location
      */
     public boolean goTo(MonthAdapter.CalendarDay day, boolean animate, boolean setSelected, boolean forceScroll) {
@@ -292,7 +292,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
          * Sets up the runnable with a short delay in case the scroll state
          * immediately changes again.
          *
-         * @param view The list view that changed state
+         * @param view        The list view that changed state
          * @param scrollState The new state it changed to
          */
         public void doScrollStateChange(AbsListView view, int scrollState) {
@@ -350,7 +350,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
 
         int maxDisplayedHeight = 0;
         int mostVisibleIndex = 0;
-        int i=0;
+        int i = 0;
         int bottom = 0;
         while (bottom < height) {
             View child = getChildAt(i);
@@ -377,7 +377,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
      * Attempts to return the date that has accessibility focus.
      *
      * @return The date that has accessibility focus, or {@code null} if no date
-     *         has focus.
+     * has focus.
      */
     private MonthAdapter.CalendarDay findAccessibilityFocus() {
         final int childCount = getChildCount();
@@ -438,14 +438,14 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
     public void onInitializeAccessibilityEvent(@NonNull AccessibilityEvent event) {
         super.onInitializeAccessibilityEvent(event);
         event.setItemCount(-1);
-   }
+    }
 
-    private static String getMonthAndYearString(MonthAdapter.CalendarDay day) {
+    private static String getMonthAndYearString(MonthAdapter.CalendarDay day, Locale locale) {
         Calendar cal = Calendar.getInstance();
         cal.set(day.year, day.month, day.day);
 
         String sbuf = "";
-        sbuf += cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+        sbuf += cal.getDisplayName(Calendar.MONTH, Calendar.LONG, locale);
         sbuf += " ";
         sbuf += YEAR_FORMAT.format(cal.getTime());
         return sbuf;
@@ -459,11 +459,10 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
     @SuppressWarnings("deprecation")
     public void onInitializeAccessibilityNodeInfo(@NonNull AccessibilityNodeInfo info) {
         super.onInitializeAccessibilityNodeInfo(info);
-        if(Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= 21) {
             info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);
             info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);
-        }
-        else {
+        } else {
             info.addAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
             info.addAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
         }
@@ -510,7 +509,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
         }
 
         // Go to that month.
-        Utils.tryAccessibilityAnnounce(this, getMonthAndYearString(day));
+        Utils.tryAccessibilityAnnounce(this, getMonthAndYearString(day,mController.getLocale()));
         goTo(day, true, false, true);
         mPerformingScroll = true;
         return true;

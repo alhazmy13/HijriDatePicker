@@ -15,6 +15,7 @@ import android.widget.TextView;
 import net.alhazmy13.hijridatepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,6 +86,8 @@ public class TimePickerFragment extends Fragment implements TimePickerDialog.OnT
                         Log.d("TimePicker", "Dialog was cancelled");
                     }
                 });
+                //Change the language to any of supported language
+                tpd.setLocale(new Locale("ar"));
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
@@ -96,15 +99,15 @@ public class TimePickerFragment extends Fragment implements TimePickerDialog.OnT
     public void onResume() {
         super.onResume();
         TimePickerDialog tpd = (TimePickerDialog) getFragmentManager().findFragmentByTag("Timepickerdialog");
-        if(tpd != null) tpd.setOnTimeSetListener(this);
+        if (tpd != null) tpd.setOnTimeSetListener(this);
     }
 
     @Override
     public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-        String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
-        String minuteString = minute < 10 ? "0"+minute : ""+minute;
-        String secondString = second < 10 ? "0"+second : ""+second;
-        String time = "You picked the following time: "+hourString+"h"+minuteString+"m"+secondString+"s";
+        String hourString = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
+        String minuteString = minute < 10 ? "0" + minute : "" + minute;
+        String secondString = second < 10 ? "0" + second : "" + second;
+        String time = "You picked the following time: " + hourString + "h" + minuteString + "m" + secondString + "s";
         timeTextView.setText(time);
     }
 }

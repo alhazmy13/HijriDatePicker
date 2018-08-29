@@ -15,6 +15,7 @@ import android.widget.TextView;
 import net.alhazmy13.hijridatepicker.date.gregorian.GregorianDatePickerDialog;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,6 +96,8 @@ public class GregorianDatePickerFragment extends Fragment implements GregorianDa
                     }
 //                    dpd.setSelectableDays(days);
                 }
+                //Change the language to any of supported language
+                dpd.setLocale(new Locale("ar"));
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
