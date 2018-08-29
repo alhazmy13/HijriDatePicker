@@ -45,6 +45,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
+
 import net.alhazmy13.hijridatepicker.HapticFeedbackController;
 import net.alhazmy13.hijridatepicker.R;
 import net.alhazmy13.hijridatepicker.TypefaceHelper;
@@ -64,6 +65,7 @@ import java.util.TreeSet;
 public class HijriDatePickerDialog extends DialogFragment implements
         OnClickListener, DatePickerController {
     private static final String TAG = "GregorianDatePickerDialog";
+
     public enum Version {
         VERSION_1,
         VERSION_2
@@ -111,12 +113,12 @@ public class HijriDatePickerDialog extends DialogFragment implements
     private static final int ANIMATION_DURATION = 300;
     private static final int ANIMATION_DELAY = 500;
 
-    private static SimpleDateFormat YEAR_FORMAT = new SimpleDateFormat("y", getLocal());
-    private static SimpleDateFormat MONTH_FORMAT = new SimpleDateFormat("MMMM", getLocal());
-    private static SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("dd", getLocal());
+    private static SimpleDateFormat YEAR_FORMAT = new SimpleDateFormat("y", Locale.getDefault());
+    private static SimpleDateFormat MONTH_FORMAT = new SimpleDateFormat("MMMM", Locale.getDefault());
+    private static SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("dd", Locale.getDefault());
     private static SimpleDateFormat VERSION_2_FORMAT;
 
-    private final UmmalquraCalendar mCalendar = trimToMidnight(new UmmalquraCalendar(getTimeZone(), getLocal()));
+    private final UmmalquraCalendar mCalendar = trimToMidnight(new UmmalquraCalendar(getTimeZone(), Locale.getDefault()));
     private OnDateSetListener mCallBack;
     private HashSet<OnDateChangedListener> mListeners = new HashSet<>();
     private DialogInterface.OnCancelListener mOnCancelListener;
@@ -158,6 +160,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
     private int mCancelColor = -1;
     private Version mVersion;
     private TimeZone mTimezone;
+    public static Locale mLocale = Locale.getDefault();
 
     private HapticFeedbackController mHapticFeedbackController;
 
@@ -216,7 +219,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
         mCalendar.set(Calendar.YEAR, year);
         mCalendar.set(Calendar.MONTH, monthOfYear);
         mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
+        setTimeZone(mCalendar.getTimeZone());
         mVersion = Build.VERSION.SDK_INT < Build.VERSION_CODES.M ? Version.VERSION_1 : Version.VERSION_2;
     }
 
@@ -234,9 +237,9 @@ public class HijriDatePickerDialog extends DialogFragment implements
             mDefaultView = savedInstanceState.getInt(KEY_DEFAULT_VIEW);
         }
         if (Build.VERSION.SDK_INT < 18) {
-            VERSION_2_FORMAT = new SimpleDateFormat(activity.getResources().getString(R.string.mdtp_date_v2_daymonthyear), Locale.getDefault());
+            VERSION_2_FORMAT = new SimpleDateFormat(activity.getResources().getString(R.string.mdtp_date_v2_daymonthyear), getLocale());
         } else {
-            VERSION_2_FORMAT = new SimpleDateFormat(DateFormat.getBestDateTimePattern(Locale.getDefault(), "EEEMMMdd"), Locale.getDefault());
+            VERSION_2_FORMAT = new SimpleDateFormat(DateFormat.getBestDateTimePattern(getLocale(), "EEEMMMdd"), getLocale());
         }
         VERSION_2_FORMAT.setTimeZone(getTimeZone());
     }
@@ -532,28 +535,28 @@ public class HijriDatePickerDialog extends DialogFragment implements
     }
 
     private void updateDisplay(boolean announce) {
-        mYearView.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+        mYearView.setText(String.format(getLocale(), "%2d", mCalendar.get(Calendar.YEAR)));
         if (mVersion == Version.VERSION_1) {
             if (mDatePickerHeaderView != null) {
                 if (mTitle != null)
-                    mDatePickerHeaderView.setText(mTitle.toUpperCase(Locale.getDefault()));
+                    mDatePickerHeaderView.setText(mTitle.toUpperCase(getLocale()));
                 else {
                     mDatePickerHeaderView.setText(mCalendar.getDisplayName(UmmalquraCalendar.DAY_OF_WEEK, UmmalquraCalendar.LONG,
-                            Locale.getDefault()).toUpperCase(Locale.getDefault()));
+                            getLocale()).toUpperCase(getLocale()));
                 }
             }
-            mSelectedMonthTextView.setText(String.valueOf(mCalendar.getDisplayName(Calendar.MONTH,Calendar.SHORT,getLocal())));
-            mSelectedDayTextView.setText(String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)));
+            mSelectedMonthTextView.setText(String.valueOf(mCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, getLocale())));
+            mSelectedDayTextView.setText(String.format(getLocale(), "%2d", mCalendar.get(Calendar.DAY_OF_MONTH)));
         }
 
         if (mVersion == Version.VERSION_2) {
             String day =
-                    mCalendar.getDisplayName(UmmalquraCalendar.DAY_OF_WEEK,UmmalquraCalendar.SHORT,getLocal())
-                    +", "+ mCalendar.getDisplayName(UmmalquraCalendar.MONTH,UmmalquraCalendar.SHORT,getLocal())
-                    + " "+mCalendar.get(Calendar.DAY_OF_MONTH);
+                    mCalendar.getDisplayName(UmmalquraCalendar.DAY_OF_WEEK, UmmalquraCalendar.SHORT, getLocale())
+                            + ", " + mCalendar.getDisplayName(UmmalquraCalendar.MONTH, UmmalquraCalendar.SHORT, getLocale())
+                            + " " + String.format(getLocale(), "%2d", mCalendar.get(Calendar.DAY_OF_MONTH));
             mSelectedDayTextView.setText(day);
             if (mTitle != null)
-                mDatePickerHeaderView.setText(mTitle.toUpperCase(Locale.getDefault()));
+                mDatePickerHeaderView.setText(mTitle.toUpperCase(mLocale));
             else
                 mDatePickerHeaderView.setVisibility(View.GONE);
         }
@@ -921,6 +924,14 @@ public class HijriDatePickerDialog extends DialogFragment implements
         DAY_FORMAT.setTimeZone(timeZone);
     }
 
+    public void setLocale(Locale locale) {
+        mLocale = locale;
+        mWeekStart = Calendar.getInstance(mTimezone, mLocale).getFirstDayOfWeek();
+        YEAR_FORMAT = new SimpleDateFormat("yyyy", locale);
+        MONTH_FORMAT = new SimpleDateFormat("MMM", locale);
+        DAY_FORMAT = new SimpleDateFormat("dd", locale);
+    }
+
     @SuppressWarnings("unused")
     public void setOnDateSetListener(OnDateSetListener listener) {
         mCallBack = listener;
@@ -995,7 +1006,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
     public UmmalquraCalendar getStartDate() {
         if (!selectableDays.isEmpty()) return selectableDays.first();
         if (mMinDate != null) return mMinDate;
-        UmmalquraCalendar output = new UmmalquraCalendar(getTimeZone(), getLocal());
+        UmmalquraCalendar output = new UmmalquraCalendar(getTimeZone(), getLocale());
         output.set(UmmalquraCalendar.YEAR, mMinYear);
         output.set(UmmalquraCalendar.DAY_OF_MONTH, 1);
         output.set(UmmalquraCalendar.MONTH, UmmalquraCalendar.JANUARY);
@@ -1006,7 +1017,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
     public UmmalquraCalendar getEndDate() {
         if (!selectableDays.isEmpty()) return selectableDays.last();
         if (mMaxDate != null) return mMaxDate;
-        UmmalquraCalendar output = new UmmalquraCalendar(getTimeZone(), getLocal());
+        UmmalquraCalendar output = new UmmalquraCalendar(getTimeZone(), getLocale());
         output.set(UmmalquraCalendar.YEAR, mMaxYear);
         output.set(UmmalquraCalendar.DAY_OF_MONTH, 31);
         output.set(UmmalquraCalendar.MONTH, UmmalquraCalendar.DECEMBER);
@@ -1165,8 +1176,9 @@ public class HijriDatePickerDialog extends DialogFragment implements
         return mTimezone == null ? TimeZone.getDefault() : mTimezone;
     }
 
-    public static Locale getLocal() {
-        return Locale.getDefault();
+    @Override
+    public Locale getLocale() {
+        return mLocale;
     }
 
     public void notifyOnDateListener() {

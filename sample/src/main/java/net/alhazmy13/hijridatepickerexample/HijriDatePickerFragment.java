@@ -11,9 +11,11 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
+
 import net.alhazmy13.hijridatepicker.date.hijri.HijriDatePickerDialog;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,6 +96,8 @@ public class HijriDatePickerFragment extends Fragment implements HijriDatePicker
                     }
 //                    dpd.setSelectableDays(days);
                 }
+                //Change the language to any of supported language
+                dpd.setLocale(new Locale("ar"));
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
@@ -105,14 +109,13 @@ public class HijriDatePickerFragment extends Fragment implements HijriDatePicker
     public void onResume() {
         super.onResume();
         HijriDatePickerDialog dpd = (HijriDatePickerDialog) getFragmentManager().findFragmentByTag("Datepickerdialog");
-        if(dpd != null) dpd.setOnDateSetListener(this);
+        if (dpd != null) dpd.setOnDateSetListener(this);
     }
-
 
 
     @Override
     public void onDateSet(HijriDatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = "You picked the following date: "+dayOfMonth+"/"+(++monthOfYear)+"/"+year;
+        String date = "You picked the following date: " + dayOfMonth + "/" + (++monthOfYear) + "/" + year;
         dateTextView.setText(date);
     }
 }

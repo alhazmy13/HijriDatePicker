@@ -17,6 +17,7 @@
 package net.alhazmy13.hijridatepicker.date.gregorian;
 
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -37,7 +38,7 @@ public interface DatePickerController {
     boolean isThemeDark();
 
     int getAccentColor();
-    
+
     boolean isHighlighted(int year, int month, int day);
 
     int getFirstDayOfWeek();
@@ -55,4 +56,6 @@ public interface DatePickerController {
     void tryVibrate();
 
     TimeZone getTimeZone();
+
+    Locale getLocale();
 }
