@@ -19,7 +19,6 @@ package net.alhazmy13.hijridatepicker.date.hijri;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -29,6 +28,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
@@ -325,12 +325,12 @@ public class HijriDatePickerDialog extends DialogFragment implements
         // All options have been set at this point: round the initial selection if necessary
         setToNearestDate(mCalendar);
 
-        mDatePickerHeaderView = (TextView) view.findViewById(R.id.mdtp_hijri_date_picker_header);
-        mMonthAndDayView = (LinearLayout) view.findViewById(R.id.mdtp_hijri_date_picker_month_and_day);
+        mDatePickerHeaderView = view.findViewById(R.id.mdtp_hijri_date_picker_header);
+        mMonthAndDayView = view.findViewById(R.id.mdtp_hijri_date_picker_month_and_day);
         mMonthAndDayView.setOnClickListener(this);
-        mSelectedMonthTextView = (TextView) view.findViewById(R.id.mdtp_hijri_date_picker_month);
-        mSelectedDayTextView = (TextView) view.findViewById(R.id.mdtp_hijri_date_picker_day);
-        mYearView = (TextView) view.findViewById(R.id.mdtp_hijri_date_picker_year);
+        mSelectedMonthTextView = view.findViewById(R.id.mdtp_hijri_date_picker_month);
+        mSelectedDayTextView = view.findViewById(R.id.mdtp_hijri_date_picker_day);
+        mYearView = view.findViewById(R.id.mdtp_hijri_date_picker_year);
         mYearView.setOnClickListener(this);
 
         final Activity activity = getActivity();
@@ -351,7 +351,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
         int bgColorResource = mThemeDark ? R.color.mdtp_date_picker_view_animator_dark_theme : R.color.mdtp_date_picker_view_animator;
         view.setBackgroundColor(ContextCompat.getColor(activity, bgColorResource));
 
-        mAnimator = (AccessibleDateAnimator) view.findViewById(R.id.mdtp_hijri_animator);
+        mAnimator = view.findViewById(R.id.mdtp_hijri_animator);
         mAnimator.addView(mDayPickerView);
         mAnimator.addView(mYearPickerView);
         mAnimator.setDateMillis(mCalendar.getTimeInMillis());
@@ -364,7 +364,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
         animation2.setDuration(ANIMATION_DURATION);
         mAnimator.setOutAnimation(animation2);
 
-        Button okButton = (Button) view.findViewById(R.id.mdtp_ok);
+        Button okButton = view.findViewById(R.id.mdtp_ok);
         okButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -378,7 +378,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
         if (mOkString != null) okButton.setText(mOkString);
         else okButton.setText(mOkResid);
 
-        Button cancelButton = (Button) view.findViewById(R.id.mdtp_cancel);
+        Button cancelButton = view.findViewById(R.id.mdtp_cancel);
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

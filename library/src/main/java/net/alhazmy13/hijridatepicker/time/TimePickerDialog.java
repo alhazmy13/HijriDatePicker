@@ -19,7 +19,6 @@ package net.alhazmy13.hijridatepicker.time;
 import android.animation.ObjectAnimator;
 import android.app.ActionBar.LayoutParams;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
@@ -32,6 +31,7 @@ import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyCharacterMap;
@@ -583,18 +583,18 @@ public class TimePickerDialog extends DialogFragment implements
         mSelectedColor = ContextCompat.getColor(context, R.color.mdtp_white);
         mUnselectedColor = ContextCompat.getColor(context, R.color.mdtp_accent_color_focused);
 
-        mHourView = (TextView) view.findViewById(R.id.mdtp_hours);
+        mHourView = view.findViewById(R.id.mdtp_hours);
         mHourView.setOnKeyListener(keyboardListener);
-        mHourSpaceView = (TextView) view.findViewById(R.id.mdtp_hour_space);
-        mMinuteSpaceView = (TextView) view.findViewById(R.id.mdtp_minutes_space);
-        mMinuteView = (TextView) view.findViewById(R.id.mdtp_minutes);
+        mHourSpaceView = view.findViewById(R.id.mdtp_hour_space);
+        mMinuteSpaceView = view.findViewById(R.id.mdtp_minutes_space);
+        mMinuteView = view.findViewById(R.id.mdtp_minutes);
         mMinuteView.setOnKeyListener(keyboardListener);
-        mSecondSpaceView = (TextView) view.findViewById(R.id.mdtp_seconds_space);
-        mSecondView = (TextView) view.findViewById(R.id.mdtp_seconds);
+        mSecondSpaceView = view.findViewById(R.id.mdtp_seconds_space);
+        mSecondView = view.findViewById(R.id.mdtp_seconds);
         mSecondView.setOnKeyListener(keyboardListener);
-        mAmTextView = (TextView) view.findViewById(R.id.mdtp_am_label);
+        mAmTextView = view.findViewById(R.id.mdtp_am_label);
         mAmTextView.setOnKeyListener(keyboardListener);
-        mPmTextView = (TextView) view.findViewById(R.id.mdtp_pm_label);
+        mPmTextView = view.findViewById(R.id.mdtp_pm_label);
         mPmTextView.setOnKeyListener(keyboardListener);
         mAmPmLayout = view.findViewById(R.id.mdtp_ampm_layout);
         String[] amPmTexts = new DateFormatSymbols(mLocale).getAmPmStrings();
@@ -609,7 +609,7 @@ public class TimePickerDialog extends DialogFragment implements
 
         mInitialTime = roundToNearest(mInitialTime);
 
-        mTimePicker = (RadialPickerLayout) view.findViewById(R.id.mdtp_time_picker);
+        mTimePicker = view.findViewById(R.id.mdtp_time_picker);
         mTimePicker.setOnValueSelectedListener(this);
         mTimePicker.setOnKeyListener(keyboardListener);
         mTimePicker.initialize(getActivity(), mLocale, this, mInitialTime, mIs24HourMode);
@@ -644,7 +644,7 @@ public class TimePickerDialog extends DialogFragment implements
             }
         });
 
-        mOkButton = (Button) view.findViewById(R.id.mdtp_ok);
+        mOkButton = view.findViewById(R.id.mdtp_ok);
         mOkButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -662,7 +662,7 @@ public class TimePickerDialog extends DialogFragment implements
         if (mOkString != null) mOkButton.setText(mOkString);
         else mOkButton.setText(mOkResid);
 
-        mCancelButton = (Button) view.findViewById(R.id.mdtp_cancel);
+        mCancelButton = view.findViewById(R.id.mdtp_cancel);
         mCancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -749,7 +749,7 @@ public class TimePickerDialog extends DialogFragment implements
                 );
                 paramsSeparator.addRule(RelativeLayout.CENTER_HORIZONTAL);
                 paramsSeparator.addRule(RelativeLayout.ABOVE, R.id.mdtp_center_view);
-                TextView separatorView = (TextView) view.findViewById(R.id.mdtp_separator);
+                TextView separatorView = view.findViewById(R.id.mdtp_separator);
                 separatorView.setLayoutParams(paramsSeparator);
             } else if (!mEnableSeconds) {
                 // Hour + Minutes + Am/Pm indicator
@@ -759,7 +759,7 @@ public class TimePickerDialog extends DialogFragment implements
                 );
                 paramsSeparator.addRule(RelativeLayout.CENTER_HORIZONTAL);
                 paramsSeparator.addRule(RelativeLayout.ABOVE, R.id.mdtp_center_view);
-                TextView separatorView = (TextView) view.findViewById(R.id.mdtp_separator);
+                TextView separatorView = view.findViewById(R.id.mdtp_separator);
                 separatorView.setLayoutParams(paramsSeparator);
                 // Put the am/pm indicator below the separator
                 RelativeLayout.LayoutParams paramsAmPm = new RelativeLayout.LayoutParams(
@@ -776,7 +776,7 @@ public class TimePickerDialog extends DialogFragment implements
                 );
                 paramsSeparator.addRule(RelativeLayout.CENTER_HORIZONTAL);
                 paramsSeparator.addRule(RelativeLayout.ABOVE, R.id.mdtp_seconds_space);
-                TextView separatorView = (TextView) view.findViewById(R.id.mdtp_separator);
+                TextView separatorView = view.findViewById(R.id.mdtp_separator);
                 separatorView.setLayoutParams(paramsSeparator);
                 // Center the seconds
                 RelativeLayout.LayoutParams paramsSeconds = new RelativeLayout.LayoutParams(
@@ -798,7 +798,7 @@ public class TimePickerDialog extends DialogFragment implements
                 );
                 paramsSeparator.addRule(RelativeLayout.CENTER_HORIZONTAL);
                 paramsSeparator.addRule(RelativeLayout.ABOVE, R.id.mdtp_seconds_space);
-                TextView separatorView = (TextView) view.findViewById(R.id.mdtp_separator);
+                TextView separatorView = view.findViewById(R.id.mdtp_separator);
                 separatorView.setLayoutParams(paramsSeparator);
                 // Put the Am/Pm indicator below the seconds
                 RelativeLayout.LayoutParams paramsAmPm = new RelativeLayout.LayoutParams(
@@ -814,7 +814,7 @@ public class TimePickerDialog extends DialogFragment implements
                     LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT
             );
             paramsSeparator.addRule(RelativeLayout.CENTER_IN_PARENT);
-            TextView separatorView = (TextView) view.findViewById(R.id.mdtp_separator);
+            TextView separatorView = view.findViewById(R.id.mdtp_separator);
             separatorView.setLayoutParams(paramsSeparator);
         } else if (!mEnableMinutes && !mEnableSeconds) {
             // center the hour
@@ -879,7 +879,7 @@ public class TimePickerDialog extends DialogFragment implements
         }
 
         // Set the title (if any)
-        TextView timePickerHeader = (TextView) view.findViewById(R.id.mdtp_time_picker_header);
+        TextView timePickerHeader = view.findViewById(R.id.mdtp_time_picker_header);
         if (!mTitle.isEmpty()) {
             timePickerHeader.setVisibility(TextView.VISIBLE);
             timePickerHeader.setText(mTitle.toUpperCase(mLocale));
@@ -1429,7 +1429,7 @@ public class TimePickerDialog extends DialogFragment implements
     private void finishKbMode(boolean updateDisplays) {
         mInKbMode = false;
         if (!mTypedTimes.isEmpty()) {
-            int values[] = getEnteredTime(null);
+            int[] values = getEnteredTime(null);
             mTimePicker.setTime(new Timepoint(values[0], values[1], values[2]));
             if (!mIs24HourMode) {
                 mTimePicker.setAmOrPm(values[3]);
