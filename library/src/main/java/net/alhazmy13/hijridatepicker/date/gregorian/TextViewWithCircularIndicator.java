@@ -16,6 +16,7 @@
 
 package net.alhazmy13.hijridatepicker.date.gregorian;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
@@ -23,17 +24,19 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
+
 import android.util.AttributeSet;
-import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatTextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import net.alhazmy13.hijridatepicker.R;
 
 /**
  * A text view which, when pressed or activated, displays a colored circle around the text.
  */
-public class TextViewWithCircularIndicator extends TextView {
+public class TextViewWithCircularIndicator extends AppCompatTextView {
 
     private static final int SELECTED_CIRCLE_ALPHA = 255;
 
@@ -103,6 +106,7 @@ public class TextViewWithCircularIndicator extends TextView {
         super.onDraw(canvas);
     }
 
+    @SuppressLint("GetContentDescriptionOverride")
     @Override
     public CharSequence getContentDescription() {
         CharSequence itemText = getText();

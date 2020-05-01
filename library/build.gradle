@@ -8,7 +8,7 @@ publish {
     groupId = 'net.alhazmy13.hijridatepicker'
     artifactId = 'library'
     uploadName = 'HijriDatePicker-v2'
-    publishVersion = '2.1.0'
+    publishVersion = '3.0.0'
     desc = 'Hijri Date Picker'
     dryRun = false
     website = 'https://github.com/alhzmy13/HijriDatePicker'
@@ -16,12 +16,12 @@ publish {
 
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0.2"
     }
@@ -40,9 +40,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:support-v4:27.1.0'
-    implementation 'com.android.support:support-v13:27.1.0'
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
+    implementation "androidx.appcompat:appcompat:1.2.0-beta01"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+
     implementation group: 'com.github.msarhan', name: 'ummalqura-calendar', version:'1.1.9'
 
 }

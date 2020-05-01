@@ -19,17 +19,12 @@ package net.alhazmy13.hijridatepicker.date.gregorian;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -40,9 +35,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.DialogFragment;
+
+import com.google.android.material.button.MaterialButton;
 
 import net.alhazmy13.hijridatepicker.HapticFeedbackController;
 import net.alhazmy13.hijridatepicker.R;
@@ -362,7 +365,7 @@ public class GregorianDatePickerDialog extends DialogFragment implements
         animation2.setDuration(ANIMATION_DURATION);
         mAnimator.setOutAnimation(animation2);
 
-        Button okButton = (Button) view.findViewById(R.id.mdtp_ok);
+        MaterialButton okButton = view.findViewById(R.id.mdtp_ok);
         okButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -376,7 +379,7 @@ public class GregorianDatePickerDialog extends DialogFragment implements
         if (mOkString != null) okButton.setText(mOkString);
         else okButton.setText(mOkResid);
 
-        Button cancelButton = (Button) view.findViewById(R.id.mdtp_cancel);
+        MaterialButton cancelButton = view.findViewById(R.id.mdtp_cancel);
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -417,7 +420,10 @@ public class GregorianDatePickerDialog extends DialogFragment implements
                 mYearPickerView.postSetSelectionFromTop(listPosition, listPositionOffset);
             }
         }
-
+        if (mThemeDark) {
+            ViewCompat.setBackgroundTintList(okButton, ContextCompat.getColorStateList(getActivity(), R.color.mdtp_light_gray));
+            ViewCompat.setBackgroundTintList(cancelButton, ContextCompat.getColorStateList(getActivity(), R.color.mdtp_light_gray));
+        }
         mHapticFeedbackController = new HapticFeedbackController(activity);
         return view;
     }

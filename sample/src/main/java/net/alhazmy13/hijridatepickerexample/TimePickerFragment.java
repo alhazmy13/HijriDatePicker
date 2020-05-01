@@ -1,6 +1,5 @@
 package net.alhazmy13.hijridatepickerexample;
 
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,9 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.button.MaterialButton;
 
 import net.alhazmy13.hijridatepicker.time.TimePickerDialog;
 
@@ -43,17 +45,17 @@ public class TimePickerFragment extends Fragment implements TimePickerDialog.OnT
         View view = inflater.inflate(R.layout.timepicker_layout, container, false);
 
         // Find our View instances
-        timeTextView = (TextView) view.findViewById(R.id.time_textview);
-        Button timeButton = (Button) view.findViewById(R.id.time_button);
-        mode24Hours = (CheckBox) view.findViewById(R.id.mode_24_hours);
-        modeDarkTime = (CheckBox) view.findViewById(R.id.mode_dark_time);
-        modeCustomAccentTime = (CheckBox) view.findViewById(R.id.mode_custom_accent_time);
-        vibrateTime = (CheckBox) view.findViewById(R.id.vibrate_time);
-        dismissTime = (CheckBox) view.findViewById(R.id.dismiss_time);
-        titleTime = (CheckBox) view.findViewById(R.id.title_time);
-        enableSeconds = (CheckBox) view.findViewById(R.id.enable_seconds);
-        limitSelectableTimes = (CheckBox) view.findViewById(R.id.limit_times);
-        showVersion2 = (CheckBox) view.findViewById(R.id.show_version_2);
+        timeTextView =  view.findViewById(R.id.time_textview);
+        MaterialButton timeButton =  view.findViewById(R.id.time_button);
+        mode24Hours =  view.findViewById(R.id.mode_24_hours);
+        modeDarkTime =  view.findViewById(R.id.mode_dark_time);
+        modeCustomAccentTime =  view.findViewById(R.id.mode_custom_accent_time);
+        vibrateTime =  view.findViewById(R.id.vibrate_time);
+        dismissTime =  view.findViewById(R.id.dismiss_time);
+        titleTime =  view.findViewById(R.id.title_time);
+        enableSeconds =  view.findViewById(R.id.enable_seconds);
+        limitSelectableTimes =  view.findViewById(R.id.limit_times);
+        showVersion2 =  view.findViewById(R.id.show_version_2);
 
         // Show a timepicker when the timeButton is clicked
         timeButton.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +90,7 @@ public class TimePickerFragment extends Fragment implements TimePickerDialog.OnT
                 });
                 //Change the language to any of supported language
                 tpd.setLocale(new Locale("ar"));
+                assert getFragmentManager() != null;
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
@@ -98,6 +101,7 @@ public class TimePickerFragment extends Fragment implements TimePickerDialog.OnT
     @Override
     public void onResume() {
         super.onResume();
+        assert getFragmentManager() != null;
         TimePickerDialog tpd = (TimePickerDialog) getFragmentManager().findFragmentByTag("Timepickerdialog");
         if (tpd != null) tpd.setOnTimeSetListener(this);
     }

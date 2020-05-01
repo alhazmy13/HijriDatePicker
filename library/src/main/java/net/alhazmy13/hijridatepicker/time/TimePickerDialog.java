@@ -19,20 +19,15 @@ package net.alhazmy13.hijridatepicker.time;
 import android.animation.ObjectAnimator;
 import android.app.ActionBar.LayoutParams;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
+
 import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -42,9 +37,19 @@ import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.DialogFragment;
+
+import com.google.android.material.button.MaterialButton;
 
 import net.alhazmy13.hijridatepicker.HapticFeedbackController;
 import net.alhazmy13.hijridatepicker.R;
@@ -110,8 +115,8 @@ public class TimePickerDialog extends DialogFragment implements
 
     private HapticFeedbackController mHapticFeedbackController;
 
-    private Button mCancelButton;
-    private Button mOkButton;
+    private MaterialButton mCancelButton;
+    private MaterialButton mOkButton;
     private TextView mHourView;
     private TextView mHourSpaceView;
     private TextView mMinuteView;
@@ -644,7 +649,7 @@ public class TimePickerDialog extends DialogFragment implements
             }
         });
 
-        mOkButton = (Button) view.findViewById(R.id.mdtp_ok);
+        mOkButton = view.findViewById(R.id.mdtp_ok);
         mOkButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -662,7 +667,7 @@ public class TimePickerDialog extends DialogFragment implements
         if (mOkString != null) mOkButton.setText(mOkString);
         else mOkButton.setText(mOkResid);
 
-        mCancelButton = (Button) view.findViewById(R.id.mdtp_cancel);
+        mCancelButton = view.findViewById(R.id.mdtp_cancel);
         mCancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -906,6 +911,10 @@ public class TimePickerDialog extends DialogFragment implements
         int lightGray = ContextCompat.getColor(context, R.color.mdtp_light_gray);
 
         mTimePicker.setBackgroundColor(mThemeDark ? lightGray : circleBackground);
+        if (mThemeDark) {
+            ViewCompat.setBackgroundTintList(mOkButton, ContextCompat.getColorStateList(getActivity(), R.color.mdtp_light_gray));
+            ViewCompat.setBackgroundTintList(mCancelButton, ContextCompat.getColorStateList(getActivity(), R.color.mdtp_light_gray));
+        }
         view.findViewById(R.id.mdtp_time_picker_dialog).setBackgroundColor(mThemeDark ? darkBackgroundColor : backgroundColor);
         return view;
     }

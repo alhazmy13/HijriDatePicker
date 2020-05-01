@@ -1,16 +1,17 @@
 package net.alhazmy13.hijridatepickerexample;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.button.MaterialButton;
 
 import net.alhazmy13.hijridatepicker.date.gregorian.GregorianDatePickerDialog;
 
@@ -44,17 +45,17 @@ public class GregorianDatePickerFragment extends Fragment implements GregorianDa
         View view = inflater.inflate(R.layout.datepicker_layout, container, false);
 
         // Find our View instances
-        dateTextView = (TextView) view.findViewById(R.id.date_textview);
-        Button dateButton = (Button) view.findViewById(R.id.date_button);
-        modeDarkDate = (CheckBox) view.findViewById(R.id.mode_dark_date);
-        modeCustomAccentDate = (CheckBox) view.findViewById(R.id.mode_custom_accent_date);
-        vibrateDate = (CheckBox) view.findViewById(R.id.vibrate_date);
-        dismissDate = (CheckBox) view.findViewById(R.id.dismiss_date);
-        titleDate = (CheckBox) view.findViewById(R.id.title_date);
-        showYearFirst = (CheckBox) view.findViewById(R.id.show_year_first);
-        showVersion2 = (CheckBox) view.findViewById(R.id.show_version_2);
-        limitSelectableDays = (CheckBox) view.findViewById(R.id.limit_dates);
-        highlightDays = (CheckBox) view.findViewById(R.id.highlight_dates);
+        dateTextView = view.findViewById(R.id.date_textview);
+        MaterialButton dateButton = view.findViewById(R.id.date_button);
+        modeDarkDate = view.findViewById(R.id.mode_dark_date);
+        modeCustomAccentDate = view.findViewById(R.id.mode_custom_accent_date);
+        vibrateDate = view.findViewById(R.id.vibrate_date);
+        dismissDate = view.findViewById(R.id.dismiss_date);
+        titleDate = view.findViewById(R.id.title_date);
+        showYearFirst = view.findViewById(R.id.show_year_first);
+        showVersion2 = view.findViewById(R.id.show_version_2);
+        limitSelectableDays = view.findViewById(R.id.limit_dates);
+        highlightDays = view.findViewById(R.id.highlight_dates);
 
         // Show a datepicker when the dateButton is clicked
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +99,7 @@ public class GregorianDatePickerFragment extends Fragment implements GregorianDa
                 }
                 //Change the language to any of supported language
                 dpd.setLocale(new Locale("ar"));
+                assert getFragmentManager() != null;
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
@@ -108,15 +110,15 @@ public class GregorianDatePickerFragment extends Fragment implements GregorianDa
     @Override
     public void onResume() {
         super.onResume();
+        assert getFragmentManager() != null;
         GregorianDatePickerDialog dpd = (GregorianDatePickerDialog) getFragmentManager().findFragmentByTag("Datepickerdialog");
-        if(dpd != null) dpd.setOnDateSetListener(this);
+        if (dpd != null) dpd.setOnDateSetListener(this);
     }
-
 
 
     @Override
     public void onDateSet(GregorianDatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = "You picked the following date: "+dayOfMonth+"/"+(++monthOfYear)+"/"+year;
+        String date = "You picked the following date: " + dayOfMonth + "/" + (++monthOfYear) + "/" + year;
         dateTextView.setText(date);
     }
 }

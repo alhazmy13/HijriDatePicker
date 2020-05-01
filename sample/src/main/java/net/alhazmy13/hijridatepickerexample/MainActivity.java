@@ -1,16 +1,17 @@
 package net.alhazmy13.hijridatepickerexample;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.support.v13.app.FragmentPagerAdapter;
 
-public class MainActivity extends AppCompatActivity
-{
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     PickerAdapter adapter;
 
@@ -18,18 +19,18 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        adapter = new PickerAdapter(getFragmentManager());
+        adapter = new PickerAdapter(getSupportFragmentManager());
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(adapter);
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        for(int i=0;i<adapter.getCount();i++) tabLayout.getTabAt(i).setText(adapter.getTitle(i));
+        for (int i = 0; i < adapter.getCount(); i++)
+            tabLayout.getTabAt(i).setText(adapter.getTitle(i));
     }
 
-    private class PickerAdapter extends FragmentPagerAdapter {
+    private static class PickerAdapter extends FragmentPagerAdapter {
         private static final int NUM_PAGES = 3;
         Fragment timePickerFragment;
         Fragment datePickerFragment;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public Fragment getItem(int position) {
-            switch(position) {
+            switch (position) {
                 case 0:
                     return timePickerFragment;
                 case 1:
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         public int getTitle(int position) {
-            switch(position) {
+            switch (position) {
                 case 0:
                     return R.string.tab_title_time;
                 case 1:

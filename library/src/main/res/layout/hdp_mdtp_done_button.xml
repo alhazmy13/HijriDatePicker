@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2013 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,31 +12,44 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mdtp_done_background"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:orientation="horizontal"
-    android:background="@android:color/transparent"
-    android:gravity="end|right"
-    android:layout_gravity="center_vertical"
-    android:paddingBottom="8dp">
+    android:layout_height="wrap_content">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/mdtp_cancel"
-        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        style="@style/mdtp_ActionButton.Text"
-        android:text="@string/mdtp_cancel" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/mdtp_background_color"
+        android:text="@string/mdtp_cancel"
+        android:textColor="@color/mdtp_button_color"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mdtp_ok"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/mdtp_neutral_pressed" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/mdtp_ok"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/mdtp_ActionButton.Text"
-        android:text="@string/mdtp_ok" />
-</LinearLayout>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/mdtp_background_color"
+        android:text="@string/mdtp_ok"
+        android:textColor="@color/mdtp_button_color"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/mdtp_neutral_pressed" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
