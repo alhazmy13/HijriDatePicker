@@ -98,7 +98,7 @@ public class HijriDatePickerFragment extends Fragment implements HijriDatePicker
 //                    dpd.setSelectableDays(days);
                 }
                 //Change the language to any of supported language
-                dpd.setLocale(new Locale("ar"));
+                dpd.setLocale(Locale.getDefault());
                 assert getFragmentManager() != null;
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }

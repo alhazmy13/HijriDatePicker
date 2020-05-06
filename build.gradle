@@ -17,5 +17,6 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url "https://dl.bintray.com/alhazmy13/maven" }
     }
 }
