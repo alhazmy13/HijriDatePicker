@@ -28,5 +28,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.material:material:1.1.0'
     implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation 'net.alhazmy13:ummalqura-calendar-snapshots:1.1.13'
 }
