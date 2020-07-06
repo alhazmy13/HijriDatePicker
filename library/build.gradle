@@ -40,10 +40,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha06'
-    implementation "androidx.appcompat:appcompat:1.2.0-beta01"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 
     implementation 'net.alhazmy13:ummalqura-calendar-snapshots:1.1.13'
 
