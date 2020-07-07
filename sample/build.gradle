@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0.2"
@@ -26,8 +26,6 @@ android {
 dependencies {
     implementation project(':library')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha06'
-    implementation "androidx.appcompat:appcompat:1.2.0-beta01"
-    implementation 'net.alhazmy13:ummalqura-calendar-snapshots:1.1.13'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation "androidx.appcompat:appcompat:1.1.0"
 }
