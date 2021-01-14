@@ -742,6 +742,8 @@ public class HijriDatePickerDialog extends DialogFragment implements
     public void setMinDate(UmmalquraCalendar calendar) {
         mMinDate = trimToMidnight((UmmalquraCalendar) calendar.clone());
 
+        setMinYear(getMinDate().get(Calendar.YEAR));
+
         if (mDayPickerView != null) {
             mDayPickerView.onChange();
         }
@@ -1025,7 +1027,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
         if (mMaxDate != null) return mMaxDate;
         UmmalquraCalendar output = new UmmalquraCalendar(getTimeZone(), getLocale());
         output.set(UmmalquraCalendar.YEAR, mMaxYear);
-        output.set(UmmalquraCalendar.DAY_OF_MONTH, 31);
+        output.set(UmmalquraCalendar.DAY_OF_MONTH, 29);
         output.set(UmmalquraCalendar.MONTH, UmmalquraCalendar.DECEMBER);
         return output;
     }
