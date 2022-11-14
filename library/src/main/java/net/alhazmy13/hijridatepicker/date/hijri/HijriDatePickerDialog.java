@@ -110,7 +110,7 @@ public class HijriDatePickerDialog extends DialogFragment implements
     private static final String KEY_TIMEZONE = "timezone";
 
 
-    private static final int DEFAULT_START_YEAR = 1400;
+    private static final int DEFAULT_START_YEAR = 1300;
     private static final int DEFAULT_END_YEAR = 1450;
 
     private static final int ANIMATION_DURATION = 300;
